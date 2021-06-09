@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:sahlhaly_event_planner/reset_password.dart';
 import 'package:sahlhaly_event_planner/style.dart';
 
 void main() {
@@ -75,7 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         alignment: Alignment.centerRight,
                         child: InkWell(
                           onTap: () {
-                            //TODO
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ResetPage()));
                           },
                           child: Text(
                             'Forgot Password ?',
