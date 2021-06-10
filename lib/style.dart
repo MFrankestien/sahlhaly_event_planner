@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 var raisedDecoration = BoxDecoration(
     color: Colors.white,
-    borderRadius: BorderRadius.circular(16),
+    borderRadius: BorderRadius.circular(12),
     border: Border.all(
-      color: Colors.grey[50],
+      color: Colors.grey[300],
     ),
     boxShadow: [
       BoxShadow(

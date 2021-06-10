@@ -6,6 +6,8 @@ import 'package:sahlhaly_event_planner/utils/size_config.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../style.dart';
+
 class PasswordPage extends StatefulWidget {
 
 
@@ -27,20 +29,18 @@ class _PasswordPageState extends State<PasswordPage> {
   String rpassword;
   String repassword;
   String error = '';
-  String UserType;
 
 
   saveuser(String userid , String UserType) async {
     SharedPreferences preferences=await SharedPreferences.getInstance();
     preferences.setString("User", userid);
-    preferences.setString("UserType", UserType);
+
   }
   getsaved()async{
     SharedPreferences preferences=await SharedPreferences.getInstance();
     var id=preferences.get("User");
-    var UserType=preferences.getString("UserType");
     print(id);
-    print(UserType);
+
   }
 
   @override
@@ -55,147 +55,182 @@ class _PasswordPageState extends State<PasswordPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        body: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: SingleChildScrollView(
-            physics: AlwaysScrollableScrollPhysics(),
-            child: Stack(
+        backgroundColor: Color(0XFF3F51b5),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Stack(
               children: <Widget>[
-                BackgroundWidget(size: size),
                 BackButtonPop(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: SizeConfig.screenWidth,
-                    child: Form(
-                      key: _formKey,
-                      child: Column(children: <Widget>[
-                        SizedBox(
-                          height: 150.0,
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: 50.0, right: 50.0),
-                          child: LinearProgressIndicator(
-                            backgroundColor: Color(0xFFD7D7D7),
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.green),
-                            value: 0.3,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 50.0),
-                          child: PageTitle(
-                            titleText: 'login Information',
-                            fontSize: 25.0,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            validator: (val) =>
-                                val.isEmpty ? 'Enter an email' : null,
-                            onChanged: (val) {
-                              setState(() => remail = val);
-                            },
-                            decoration: InputDecoration(
-                              labelText: 'SignIn Email',
-                              fillColor: Colors.white,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                        PageTitle(
-                          titleText: 'password Confirmation',
-                          fontSize: 15.0,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: TextFormField(
-                            validator: (val) => val.length < 6
-                                ? 'Enter a password 6+ chars long'
-                                : null,
-                            onChanged: (val) {
-                              setState(() => rpassword = val);
-                            },
-                            obscureText: !passwordVisible,
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                icon: Icon(passwordVisible
-                                    ? Icons.visibility
-                                    : Icons.visibility_off),
-                                onPressed: () {
-                                  setState(() {
-                                    passwordVisible = !passwordVisible;
-                                  });
-                                },
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10.0)),
-                              ),
-                              labelText: 'Password',
-                              labelStyle: TextStyle(fontSize: 15.0),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: TextFormField(
-                            validator: (val) =>
-                                val != rpassword ? 'not match' : null,
-                            onChanged: (val) {
-                              setState(() => repassword = val);
-                            },
-                            obscureText: !passwordVisibleConfirm,
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                icon: Icon(passwordVisibleConfirm
-                                    ? Icons.visibility
-                                    : Icons.visibility_off),
-                                onPressed: () {
-                                  setState(() {
-                                    passwordVisibleConfirm =
-                                        !passwordVisibleConfirm;
-                                  });
-                                },
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10.0)),
-                              ),
-                              labelText: 'Confirm Password',
-                              labelStyle: TextStyle(fontSize: 15.0),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 12.0),
-                        Text(
-                          error,
-                          style: TextStyle(color: Colors.red, fontSize: 14.0),
-                        )
-                      ]),
-                    ),
-                  ),
-                ),
               ],
             ),
-          ),
+            _topheader(),
+            Expanded(
+                child: Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.only(top: 32),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
+                    color: Colors.grey[50],
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+
+                        Form(
+                          key: _formKey,
+                          child: Column(children: <Widget>[
+                            SizedBox(
+                              height: 50.0,
+                            ),
+                            Padding(
+                              padding:
+                              const EdgeInsets.only(left: 50.0, right: 50.0),
+                              child: LinearProgressIndicator(
+                                backgroundColor: Color(0xFFD7D7D7),
+                                valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.green),
+                                value: 0.3,
+                              ),
+                            ),
+
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              height: 56,
+                              padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
+                              margin: EdgeInsets.all(8),
+                              decoration: raisedDecoration,
+                              child: Center(
+                                child: TextFormField(
+                                  validator: (val) =>
+                                  val.isEmpty ? 'Enter an email' : null,
+                                  onChanged: (val) {
+                                    setState(() => remail = val);
+                                  },
+                                  decoration: InputDecoration(
+
+                                      border: InputBorder.none,
+                                      hintText: 'SignIn Email',
+                                      hintStyle: TextStyle(
+                                        color: Colors.black38,
+                                      )),
+                                ),
+                              ),
+                            ),
+                            PageTitle(
+                              titleText: 'password Confirmation',
+                              fontSize: 15.0,
+                            ),
+                            Container(
+                              height: 56,
+                              padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
+                              margin: EdgeInsets.all(8),
+                              decoration: raisedDecoration,
+                              child: Center(
+                                child: TextFormField(
+                                  validator: (val) => val.length < 6
+                                      ? 'Enter a password 6+ chars long'
+                                      : null,
+                                  onChanged: (val) {
+                                    setState(() => rpassword = val);
+                                  },
+                                  obscureText: !passwordVisible,
+                                  decoration: InputDecoration(
+                                      suffixIcon: IconButton(
+                                        icon: Icon(passwordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off),
+                                        onPressed: () {
+                                          setState(() {
+                                            passwordVisible = !passwordVisible;
+                                          });
+                                        },
+                                      ),
+                                      border: InputBorder.none,
+                                      hintText: 'Password',
+                                      hintStyle: TextStyle(
+                                        color: Colors.black38,
+                                      )),
+                                ),
+                              ),// password
+                            ),//password
+
+                            Container(
+                              height: 56,
+                              padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
+                              margin: EdgeInsets.all(8),
+                              decoration: raisedDecoration,
+                              child: Center(
+                                child: TextFormField(
+                                  validator: (val) =>
+                                  val != rpassword ? 'not match' : null,
+                                  onChanged: (val) {
+                                    setState(() => repassword = val);
+                                  },
+                                  obscureText: !passwordVisibleConfirm,
+                                  decoration: InputDecoration(
+                                      suffixIcon: IconButton(
+                                        icon: Icon(passwordVisibleConfirm
+                                            ? Icons.visibility
+                                            : Icons.visibility_off),
+                                        onPressed: () {
+                                          setState(() {
+                                            passwordVisibleConfirm =
+                                            !passwordVisibleConfirm;
+                                          });
+                                        },
+                                      ),
+                                      border: InputBorder.none,
+                                      hintText: 'Confirm Password',
+                                      hintStyle: TextStyle(
+                                        color: Colors.black38,
+                                      )),
+                                ),
+                              ),
+                            ),// confirm pass
+                            SizedBox(height: 12.0),
+
+                            Text(
+                              error,
+                              style: TextStyle(color: Colors.red, fontSize: 14.0),
+                            )
+                          ]),
+                        ),
+                        SizedBox(height: 20),
+
+
+                      ],
+                    ),
+                  ),
+                )),
+
+
+
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.navigate_next),
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Color(0XFF3F51b5),
           onPressed: () async {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => NamePage(userid: userid)));
+    if (_formKey.currentState.validate()) {
+      print(remail);
+      print(rpassword);
+      print(repassword);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => NamePage(userid: userid)));
+
+    }
+
            /* if (_formKey.currentState.validate()) {
               dynamic result = await _auth.registerWithEmailAndPassword(
                   remail.trim(), rpassword.toLowerCase());
@@ -233,5 +268,25 @@ class _PasswordPageState extends State<PasswordPage> {
             }*/
           },
         ));
+  }
+  _topheader() {
+    return Padding(
+      padding: EdgeInsets.only(left: 32),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'login Information',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 28,
+            ),
+          ),
+
+        ],
+      ),
+    );
   }
 }

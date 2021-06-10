@@ -3,6 +3,8 @@ import 'package:sahlhaly_event_planner/Register/select_gender_page.dart';
 import 'package:sahlhaly_event_planner/utils/constants.dart';
 import 'package:sahlhaly_event_planner/utils/size_config.dart';
 
+import '../style.dart';
+
 
 class NamePage extends StatefulWidget {
 
@@ -24,107 +26,137 @@ class _NamePageState extends State<NamePage> {
   _NamePageState(this.userid);
 
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: SingleChildScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
-          child: Stack(
+      backgroundColor: Color(0XFF3F51b5),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Stack(
             children: <Widget>[
-              BackgroundWidget(size: size),
               BackButtonPop(),
               SizedBox(
                 height: 6.0,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Container(
-                  alignment: Alignment.center,
-                  height: SizeConfig.screenHeight,
-                  width: SizeConfig.screenWidth,
-                  child: Form(
-                    key: _formKeyPI,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 100, left: 50.0, right: 50.0, bottom: 20.0),
-                          child: LinearProgressIndicator(
-                            backgroundColor: Color(0xFFD7D7D7),
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.green),
-                            value: 0.7,
-                          ),
-                        ),
-                        PageTitle(
-                          titleText: "Contact Page Title",
-                          fontSize: 25.0,
-                        ),
-                        SizedBox(height: 15),
-                        TextFormField(
-                          validator: (val) =>
-                              val.isEmpty ? 'Enter First Name' : null,
-                          onChanged: (val) {
-                            setState(() => fName = val);
-                          },
-                          decoration: InputDecoration(
-                            labelText: "firstName",
-                            fillColor: Colors.white,
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0xFF203354), width: 2.0),
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 30),
-                        TextFormField(
-                          validator: (val) =>
-                              val.isEmpty ? 'Enter Last Name' : null,
-                          onChanged: (val) {
-                            setState(() => lName = val);
-                          },
-                          decoration: InputDecoration(
-                            labelText: "lastName",
-                            fillColor: Colors.white,
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0xFF203354), width: 2.0),
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 30),
-                        TextFormField(
-                          validator: (val) =>
-                              val.isEmpty ? 'Enter Phone Number' : null,
-                          onChanged: (val) {
-                            setState(() => phone = val);
-                          },
-                          decoration: InputDecoration(
-                            labelText: "userPhone",
-                            fillColor: Colors.white,
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0xFF203354), width: 2.0),
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 30),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+
             ],
           ),
-        ),
+          _topheader(),
+          Expanded(
+              child: Container(
+                width: double.infinity,
+                margin: EdgeInsets.only(top: 32),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
+                  color: Colors.grey[50],
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+
+                      Form(
+                        key: _formKeyPI,
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 80, left: 50.0, right: 50.0, bottom: 20.0),
+                              child: LinearProgressIndicator(
+                                backgroundColor: Color(0xFFD7D7D7),
+                                valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.green),
+                                value: 0.7,
+                              ),
+                            ),
+                            SizedBox(height: 15),
+                            Container(
+                              height: 56,
+                              padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
+                              margin: EdgeInsets.all(8),
+                              decoration: raisedDecoration,
+                              child: Center(
+                                child: TextFormField(
+                                  validator: (val) =>
+                                  val.isEmpty ? 'Enter First Name' : null,
+                                  onChanged: (val) {
+                                    setState(() => fName = val);
+                                  },
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "First Name",
+                                      hintStyle: TextStyle(
+                                        color: Colors.black38,
+                                      )),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 30),
+                            Container(
+                              height: 56,
+                              padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
+                              margin: EdgeInsets.all(8),
+                              decoration: raisedDecoration,
+                              child: Center(
+                                child: TextFormField(
+                                  validator: (val) =>
+                                  val.isEmpty ? 'Enter Last Name' : null,
+                                  onChanged: (val) {
+                                    setState(() => lName = val);
+                                  },
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Last Name",
+                                      hintStyle: TextStyle(
+                                        color: Colors.black38,
+                                      )),
+                                ),
+                              ),
+                            ),//last name
+                            SizedBox(height: 30),
+
+                            Container(
+                              height: 56,
+                              padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
+                              margin: EdgeInsets.all(8),
+                              decoration: raisedDecoration,
+                              child: Center(
+                                child: TextFormField(
+                                  validator: (val) =>
+                                  val.isEmpty ? 'Enter Phone Number' : null,
+                                  onChanged: (val) {
+                                    setState(() => phone = val);
+                                  },
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: 'Phone',
+                                      hintStyle: TextStyle(
+                                        color: Colors.black38,
+                                      )),
+                                ),
+                              ),
+                            ),// Phone
+                            SizedBox(height: 30),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20),
+
+
+                    ],
+                  ),
+                ),
+              )),
+
+        ],
       ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.navigate_next),
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Color(0XFF3F51b5),
           onPressed: () {
             if (_formKeyPI.currentState.validate()) {
               print(fName);
@@ -139,6 +171,26 @@ class _NamePageState extends State<NamePage> {
                       userid: userid)));
             }
           }),
+    );
+  }
+  _topheader() {
+    return Padding(
+      padding: EdgeInsets.only(left: 32),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Personal Information',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 28,
+            ),
+          ),
+
+        ],
+      ),
     );
   }
 }

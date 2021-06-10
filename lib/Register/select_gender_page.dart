@@ -85,49 +85,73 @@ class _SelectGenderState extends State<SelectGender> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Color(0XFF3F51b5),
       resizeToAvoidBottomInset: false,
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: Stack(
-          children: <Widget>[
-            BackgroundWidget(size: size),
-            BackButtonPop(),
-            SizedBox(
-              height: 5.0,
-            ),
-            Container(
-              alignment: Alignment.center,
-              height: size.height,
-              width: size.width,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 50.0, right: 50.0, top: 70.0),
-                    child: LinearProgressIndicator(
-                      backgroundColor: Color(0xFFD7D7D7),
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
-                      value: 0.7,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15.0),
-                    child: PageTitle(
-                      titleText: "genderSelectionText",
-                      fontSize: 25.0,
-                    ),
-                  ),
-                  selectGender(),
-                ],
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Stack(
+            children: <Widget>[
+              BackButtonPop(),
+              SizedBox(
+                height: 5.0,
               ),
-            ),
-          ],
-        ),
+
+            ],
+          ),
+          _topheader(),
+          Expanded(
+              child: Container(
+                width: double.infinity,
+                margin: EdgeInsets.only(top: 32),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
+                  color: Colors.grey[50],
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+
+                      Container(
+                        alignment: Alignment.center,
+                        height: size.height/2,
+                        width: size.width,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 50.0, right: 50.0, top: 70.0),
+                              child: LinearProgressIndicator(
+                                backgroundColor: Color(0xFFD7D7D7),
+                                valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                                value: 0.7,
+                              ),
+                            ),
+
+                            selectGender(),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20),
+
+
+                    ],
+                  ),
+                ),
+              )),
+
+        ],
       ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.navigate_next),
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Color(0XFF3F51b5),
           onPressed: () async {
            /* if (_defaultChoiceIndex == 0) {
               choice = 'Male';
@@ -151,6 +175,26 @@ class _SelectGenderState extends State<SelectGender> {
                           userid: userid,
                         )));
           }),
+    );
+  }
+  _topheader() {
+    return Padding(
+      padding: EdgeInsets.only(left: 32),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Gender',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 28,
+            ),
+          ),
+
+        ],
+      ),
     );
   }
 }

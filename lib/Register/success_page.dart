@@ -16,18 +16,18 @@ class SuccessPage extends StatefulWidget {
 class _SuccessPageState extends State<SuccessPage> {
   String userid;
 
-  final Firestore _firestore =Firestore.instance;
+  //final Firestore _firestore =Firestore.instance;
   String type;
 
 
 
-  Future<void> getusertype() async{
+  /*Future<void> getusertype() async{
     FirebaseUser userid = await FirebaseAuth.instance.currentUser();
     var usertype=await _firestore.collection('Users').document(userid.uid).get().then
       ((DocumentSnapshot) async {
       type = DocumentSnapshot.data['UserType'];
       print(type);
-    });}
+    });}*/
 
   _SuccessPageState(this.userid);
 
@@ -62,7 +62,7 @@ class _SuccessPageState extends State<SuccessPage> {
                           height: 70.0,
                         ),
                         Image(
-                          image: AssetImage('assets/images/medal_badge.png'),
+                          image: AssetImage('assets/medal_badge.png'),
                           height: 200.0,
                         ),
                       ],
@@ -102,7 +102,7 @@ class _SuccessPageState extends State<SuccessPage> {
                           children: <Widget>[
                             GestureDetector(
                               onTap: () async {
-                                  await getusertype();
+                                 // await getusertype();
 
                               /*  Navigator.push(
                                     context,

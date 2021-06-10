@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "28547812440",
+    "project_id": "sahlhaly-event",
+    "storage_bucket": "sahlhaly-event.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28547812440:android:fdc881ecaa1691ce890e2d",
+        "android_client_info": {
+          "package_name": "com.example.sahlhaly_event_planner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "28547812440-erldvar0vp1v2r23m5g32r2f0h494h32.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sahlhaly_event_planner",
+            "certificate_hash": "402d572119e74b4b0242adec26cfb237c716357e"
+          }
+        },
+        {
+          "client_id": "28547812440-umhibaorenn9fefundldkg21k98kltmt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKzLK88ifh6mYYwwuIjSslJLvu8q6tEUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "28547812440-umhibaorenn9fefundldkg21k98kltmt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

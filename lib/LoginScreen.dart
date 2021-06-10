@@ -143,6 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
           obscureText: obscuretext,
           decoration: InputDecoration(
               border: InputBorder.none,
+
               hintText: hintText,
               hintStyle: TextStyle(
                 color: Colors.black38,
