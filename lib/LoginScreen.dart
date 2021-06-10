@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:sahlhaly_event_planner/Register/Login_info_page.dart';
 import 'package:sahlhaly_event_planner/reset_password.dart';
 import 'package:sahlhaly_event_planner/style.dart';
 
@@ -103,17 +104,25 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _createAccountLink() {
-    return Container(
-      color: Colors.grey[50],
-      padding: EdgeInsets.only(bottom: 16),
-      height: 60,
-      child: Center(
-        child: Text(
-          'Don\'t have account ? Sign Up Now',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: facebookColor,
-            fontSize: 16,
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PasswordPage()));
+        },
+      child: Container(
+        color: Colors.grey[50],
+        padding: EdgeInsets.only(bottom: 16),
+        height: 60,
+        child: Center(
+          child: Text(
+            'Don\'t have account ? Sign Up Now',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              color: facebookColor,
+              fontSize: 16,
+            ),
           ),
         ),
       ),
