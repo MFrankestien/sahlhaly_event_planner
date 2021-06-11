@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Register/Login_info_page.dart';
 import 'package:sahlhaly_event_planner/reset_password.dart';
@@ -11,6 +12,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  String email = '';
+  String password = '';
+  String error = '';
+  final _formKey = GlobalKey<FormState>();
+  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,61 +45,132 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(height: 40),
-                      _labelText('Email:'),
-                      _inputTextField('example@email.com', false),
-                      SizedBox(height: 16),
-                      _labelText('Password:'),
-                      _inputTextField('******', true),
-                      SizedBox(height: 12),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ResetPage()));
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height: 40),
+                        _labelText('Email:'),
+                    Container(
+                      height: 56,
+                      padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
+                      margin: EdgeInsets.all(8),
+                      decoration: raisedDecoration,
+                      child: Center(
+                        child: TextFormField(
+                          validator: (val) =>
+                          val.isEmpty ? 'Enter an email' : null,
+                          onChanged: (val) {
+                            setState(() => email = val);
                           },
-                          child: Text(
-                            'Forgot Password ?',
-                            style: TextStyle(
-                              color: Colors.blue[900],
-                            ),
-                          ),
+
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+
+                              hintText: 'Enter Your Email',
+                              hintStyle: TextStyle(
+                                color: Colors.black38,
+                              )),
                         ),
                       ),
-                      SizedBox(height: 20),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          height: 46,
-                          width: 160,
-                          child: RaisedButton(
-                            onPressed: () {
-                              //TODO
+                    ),// email
+                        SizedBox(height: 16),
+                        _labelText('Password:'),
+                        Container(
+                          height: 56,
+                          padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
+                          margin: EdgeInsets.all(8),
+                          decoration: raisedDecoration,
+                          child: Center(
+                            child: TextFormField(
+                              obscureText: true,
+                              validator: (val) => val.length < 6
+                                  ? 'Enter a password 6+ chars long'
+                                  : null,
+                              onChanged: (val) {
+                                setState(() => password = val);
+                              },
+
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+
+                                  hintText: 'Password',
+                                  hintStyle: TextStyle(
+                                    color: Colors.black38,
+                                  )),
+                            ),
+                          ),
+                        ),// password,
+                        SizedBox(height: 12),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ResetPage()));
                             },
                             child: Text(
-                              'Login',
+                              'Forgot Password ?',
                               style: TextStyle(
-                                fontSize: 18,
+                                color: Colors.blue[900],
                               ),
-                            ),
-                            color: Color(0XFF303f9f),
-                            textColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 12),
+                        SizedBox(height: 20),
+                        Text(
+                          error,
+                          style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        ),
+                        SizedBox(height: 20),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            height: 46,
+                            width: 160,
+                            child: RaisedButton(
+                              onPressed: () async {
+                                if (_formKey.currentState.validate()) {
+                                 try{
+                                   dynamic result =
+                                   await auth.signInWithEmailAndPassword(email: email.trim(), password: password.toLowerCase());
 
-                    ],
+
+                                 }catch(e){
+                                   print(e);
+                                   if (e!=null){
+                                     setState(() {
+                                       error =
+                                       'Could not sign in with those credentials wrong Email or Password';
+                                     });
+                                   }
+                                 }
+
+
+                                }
+                              },
+                              child: Text(
+                                'Login',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                ),
+                              ),
+                              color: Color(0XFF303f9f),
+                              textColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 12),
+
+                      ],
+                    ),
                   ),
                 ),
               )),
