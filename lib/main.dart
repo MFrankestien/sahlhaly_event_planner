@@ -1,12 +1,20 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sahlhaly_event_planner/LoginScreen.dart';
+import 'package:sahlhaly_event_planner/auth.dart';
 import 'package:sahlhaly_event_planner/reset_password.dart';
 import 'package:sahlhaly_event_planner/splash_screen/animation_screen.dart';
 import 'package:sahlhaly_event_planner/style.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(
+      ChangeNotifierProvider<Auth>(
+    create: (_) => Auth(),
+  child: MyApp(),));
 }
 
 class MyApp extends StatelessWidget {
