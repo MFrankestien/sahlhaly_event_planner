@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/style.dart';
 
@@ -9,7 +10,7 @@ class ResetPage extends StatefulWidget {
 }
 
 class _ResetPageState extends State<ResetPage> {
-
+  final FirebaseAuth auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
   // text field state
   String email = '';
@@ -67,6 +68,7 @@ class _ResetPageState extends State<ResetPage> {
                                   if (_formKey.currentState.validate()) {
                                     warning =
                                     "A password reset link has been sent to $email";
+                                    submit();
                                   }
                                 },
                                 child: Align(
@@ -150,7 +152,9 @@ class _ResetPageState extends State<ResetPage> {
       ),
     );
   }
-
+  void submit() async {
+    await auth.sendPasswordResetEmail(email: email);
+  }
   _topheader() {
     return Padding(
       padding: EdgeInsets.only(left: 32),
