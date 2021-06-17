@@ -3,8 +3,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart'as http;
 import 'package:flutter/widgets.dart';
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Auth with ChangeNotifier{
+
 
   Future<void> _auth(String email, String password,String urlseg) async {
 

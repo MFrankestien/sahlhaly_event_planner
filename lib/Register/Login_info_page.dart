@@ -231,6 +231,10 @@ class _PasswordPageState extends State<PasswordPage> {
       Provider.of<Auth>(context,listen: false).signup(remail.trim(), rpassword.toLowerCase()).then((value) {
         final users = auth.currentUser;
       print(users);});
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => NamePage()));
 
 
     }

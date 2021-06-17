@@ -1,11 +1,10 @@
-
+import 'package:sahlhaly_event_planner/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sahlhaly_event_planner/LoginScreen.dart';
-import 'package:sahlhaly_event_planner/auth.dart';
-import 'package:sahlhaly_event_planner/reset_password.dart';
+import 'package:sahlhaly_event_planner/models/user.dart';
+import 'package:sahlhaly_event_planner/services/auth.dart';
 import 'package:sahlhaly_event_planner/splash_screen/animation_screen.dart';
-import 'package:sahlhaly_event_planner/style.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
@@ -21,14 +20,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return StreamProvider<AppUser>.value(
+      value: AuthService().user,
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: MyHomePage(title: 'Flutter Demo Home Page'),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }

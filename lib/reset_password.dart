@@ -61,16 +61,34 @@ class _ResetPageState extends State<ResetPage> {
                             children: <Widget>[
 
 
-                              _inputTextField('example@email.com', false),
+                              _labelText('Email:'),
+                              Container(
+                                height: 56,
+                                padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
+                                margin: EdgeInsets.all(8),
+                                decoration: raisedDecoration,
+                                child: Center(
+                                  child: TextFormField(
+                                    validator: (val) =>
+                                    val.isEmpty ? 'Enter an email' : null,
+                                    onChanged: (val) {
+                                      setState(() => email = val);
+                                    },
+
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none,
+
+                                        hintText: 'Enter Your Email',
+                                        hintStyle: TextStyle(
+                                          color: Colors.black38,
+                                        )),
+                                  ),
+                                ),
+                              ),
                               SizedBox(height: 30),
                               GestureDetector(
-                                onTap: () {
-                                  if (_formKey.currentState.validate()) {
-                                    warning =
-                                    "A password reset link has been sent to $email";
-                                    submit();
-                                  }
-                                },
+                                onTap: () {},
+
                                 child: Align(
                                   alignment: Alignment.center,
                                   child: Container(
@@ -78,9 +96,18 @@ class _ResetPageState extends State<ResetPage> {
                                     width: 160,
                                     child: RaisedButton(
                                       onPressed: () {
-                                        print('reset');
-                                        showAlert();
-                                      },
+                                    if (_formKey.currentState.validate()) {
+                                    setState(() {
+                                      warning =
+                                      "A password reset link has been sent to $email";
+                                    });
+                                    submit();
+                                    print('reset');
+                                    }
+                                    },
+
+
+
                                       child: Text(
                                         'Reset',
                                         style: TextStyle(
@@ -112,30 +139,6 @@ class _ResetPageState extends State<ResetPage> {
 
 
         ],
-      ),
-    );
-  }
-  _inputTextField(hintText, bool obscuretext) {
-    return Container(
-      height: 56,
-      padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
-      margin: EdgeInsets.all(8),
-      decoration: raisedDecoration,
-      child: Center(
-        child: TextFormField(
-          validator: (val) =>
-          val.isEmpty ? 'Enter an email' : null,
-          onChanged: (val) {
-            setState(() => email = val);
-          },
-          obscureText: obscuretext,
-          decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: hintText,
-              hintStyle: TextStyle(
-                color: Colors.black38,
-              )),
-        ),
       ),
     );
   }
