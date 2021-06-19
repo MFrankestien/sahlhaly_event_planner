@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sahlhaly_event_planner/LoginScreen.dart';
+import 'package:sahlhaly_event_planner/wrapper.dart';
 import 'hole_painter.dart';
 import 'staggered_raindrop_animation.dart';
 
@@ -17,6 +19,7 @@ class _AnimationScreenState extends State<AnimationScreen> with SingleTickerProv
   Size size = Size.zero;
   AnimationController _controller;
   StaggeredRaindropAnimation _animation;
+  Animation<double> _scale2Animation;
 
   @override
   void initState() {
@@ -31,6 +34,22 @@ class _AnimationScreenState extends State<AnimationScreen> with SingleTickerProv
     _controller.addListener(() {
       setState(() {});
     });
+
+
+    _scale2Animation = Tween<double>(
+        begin: 1.0,
+        end: 32.0
+    ).animate(_controller)..addStatusListener((status) async {
+      if (status == AnimationStatus.completed) {
+
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Wrapper()));
+
+
+    }});
+
   }
 
   @override

@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Auth with ChangeNotifier{
+class Authp with ChangeNotifier{
 
 
   Future<void> _auth(String email, String password,String urlseg) async {

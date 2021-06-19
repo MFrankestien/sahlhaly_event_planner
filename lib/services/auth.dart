@@ -1,15 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sahlhaly_event_planner/models/user.dart';
 
 
 class AuthService {
+  final String uid;
+  AuthService({this.uid});
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final CollectionReference GustesCollection =
+  FirebaseFirestore.instance.collection('Users');
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
 
   // auth change user stream
   Stream<AppUser> get user {
-    return _auth.authStateChanges()
+    return auth.authStateChanges()
         .map(_userFromFirebaseUser);
   }
 
@@ -21,18 +27,42 @@ class AuthService {
 
 
   // Reset Password
-  Future sendPasswordResetEmail(String email) async {
-    return _auth.sendPasswordResetEmail(email: email);
+  Future registerWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential result = await auth.createUserWithEmailAndPassword(email: email, password: password);
+      User user = result.user;
+      return _userFromFirebaseUser(user);
+    } catch (error) {
+      print(error.toString());
+      return null;
+    }
   }
 
 
 
 
 
+
+
+
+  // Updating User Data
+  Future<void> updateUserData(
+      String fName, String lName, String phone, String gender,String nid) async {
+    return await GustesCollection.doc(uid).set({
+      'FirstName': fName,
+      'LastName': lName,
+      'Phone': phone,
+      'Gender': gender,
+      'NationalID':nid
+    });
+  }
+
+
+
 // sign out
   Future signOut() async {
     try {
-      return await _auth.signOut();
+      return await auth.signOut();
     } catch (error) {
       print(error.toString());
       return null;

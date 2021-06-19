@@ -2,30 +2,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sahlhaly_event_planner/Register/success_page.dart';
+import 'package:sahlhaly_event_planner/services/auth.dart';
 import 'package:sahlhaly_event_planner/utils/constants.dart';
 import 'package:sahlhaly_event_planner/utils/size_config.dart';
 
 
 class SelectGender extends StatefulWidget {
   String userid;
-  String fname, lname, phone;
+  String fname, lname, phone,nid;
 
   SelectGender(
-      {this.fname, this.lname, this.phone, this.userid});
+      {this.fname, this.lname, this.phone, this.userid,this.nid});
 
   @override
   _SelectGenderState createState() =>
-      _SelectGenderState(fname, lname, phone,  userid);
+      _SelectGenderState(fname, lname, phone,  userid,nid);
 }
 
 class _SelectGenderState extends State<SelectGender> {
   List<String> _selectGender = ['♂ Male', '♀ Female'];
   int _defaultChoiceIndex;
   String choice = '';
-  String fname, lname, phone,  userid;
+  String fname, lname, phone,  userid,nid;
 
   _SelectGenderState(
-      this.fname, this.lname, this.phone,  this.userid);
+      this.fname, this.lname, this.phone,  this.userid,this.nid);
 
   @override
   void initState() {
@@ -153,22 +154,23 @@ class _SelectGenderState extends State<SelectGender> {
           child: Icon(Icons.navigate_next),
           backgroundColor: Color(0XFF3F51b5),
           onPressed: () async {
-           /* if (_defaultChoiceIndex == 0) {
+            if (_defaultChoiceIndex == 0) {
               choice = 'Male';
               print(choice);
-              await DatabaseService(uid: userid).updateJobSeekerData(
-                  fname, lname, phone, 'Jobseeker', selectedjob, choice);
+              await AuthService(uid: userid).updateUserData(
+                  fname, lname, phone,  choice,nid);
             } else {
               choice = 'Female';
               print(choice);
               print(fname);
               print(lname);
               print(phone);
+              print(nid);
 
-              await DatabaseService(uid: userid).updateJobSeekerData(
-                  fname, lname, phone, ,  choice);
-            }*/
-            Navigator.push(
+              await AuthService(uid: userid).updateUserData(
+                  fname, lname, phone,  choice,nid);
+            }
+            Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                     builder: (context) => SuccessPage(

@@ -1,13 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:provider/provider.dart';
 import 'package:sahlhaly_event_planner/Register/personal_Information.dart';
-import 'package:sahlhaly_event_planner/auth.dart';
 import 'package:sahlhaly_event_planner/utils/constants.dart';
-import 'package:sahlhaly_event_planner/utils/size_config.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sahlhaly_event_planner/services/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../style.dart';
 
@@ -32,7 +30,7 @@ class _PasswordPageState extends State<PasswordPage> {
   String rpassword;
   String repassword;
   String error = '';
-  final FirebaseAuth auth = FirebaseAuth.instance;
+  final AuthService auth = AuthService();
 
 
   saveuser(String userid , String UserType) async {
@@ -224,17 +222,27 @@ class _PasswordPageState extends State<PasswordPage> {
           child: Icon(Icons.navigate_next),
           backgroundColor: Color(0XFF3F51b5),
           onPressed: () async {
-    if (_formKey.currentState.validate()) {
-      print(remail);
-      print(rpassword);
-      print(repassword);
-      Provider.of<Auth>(context,listen: false).signup(remail.trim(), rpassword.toLowerCase()).then((value) {
-        final users = auth.currentUser;
-      print(users);});
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => NamePage()));
+          if (_formKey.currentState.validate()) {
+            print(remail);
+            print(rpassword);
+            print(repassword);
+
+              dynamic result = await auth.registerWithEmailAndPassword(
+            remail.trim(), rpassword.toLowerCase());
+            if (result == null) {
+            setState(() {
+            error = 'Please supply a valid email';
+            });
+            } else {
+              await AuthService(uid: result.uid)
+                  .updateUserData('Complete your info', 'Complete your info', 'Complete your info', 'Complete your info','Complete your info');
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NamePage(userid: result.uid)));
+
+    }
+
 
 
     }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Register/select_gender_page.dart';
 import 'package:sahlhaly_event_planner/utils/constants.dart';
-import 'package:sahlhaly_event_planner/utils/size_config.dart';
+
 
 import '../style.dart';
 
@@ -22,6 +22,7 @@ class _NamePageState extends State<NamePage> {
   String fName = '';
   String lName = '';
   String phone = '';
+  String nid= '';
 
   _NamePageState(this.userid);
 
@@ -33,9 +34,8 @@ class _NamePageState extends State<NamePage> {
         children: [
           Stack(
             children: <Widget>[
-              BackButtonPop(),
               SizedBox(
-                height: 6.0,
+                height: 50.0,
               ),
 
             ],
@@ -141,6 +141,27 @@ class _NamePageState extends State<NamePage> {
                               ),
                             ),// Phone
                             SizedBox(height: 30),
+                            Container(
+                              height: 56,
+                              padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
+                              margin: EdgeInsets.all(8),
+                              decoration: raisedDecoration,
+                              child: Center(
+                                child: TextFormField(
+                                  validator: (val) =>
+                                  val.isEmpty ? 'Enter National ID Number' : null,
+                                  onChanged: (val) {
+                                    setState(() => nid = val);
+                                  },
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: 'Enter National ID Number',
+                                      hintStyle: TextStyle(
+                                        color: Colors.black38,
+                                      )),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -162,12 +183,16 @@ class _NamePageState extends State<NamePage> {
               print(fName);
               print(lName);
               print(phone);
+              print(nid);
               print(userid);
+
+
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SelectGender(
                       fname: fName,
                       lname: lName,
                       phone: phone,
+                      nid:nid,
                       userid: userid)));
             }
           }),

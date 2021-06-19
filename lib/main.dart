@@ -1,19 +1,17 @@
-import 'package:sahlhaly_event_planner/auth.dart';
+import 'package:sahlhaly_event_planner/authP.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sahlhaly_event_planner/LoginScreen.dart';
 import 'package:sahlhaly_event_planner/models/user.dart';
 import 'package:sahlhaly_event_planner/services/auth.dart';
 import 'package:sahlhaly_event_planner/splash_screen/animation_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sahlhaly_event_planner/wrapper.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-      ChangeNotifierProvider<Auth>(
-    create: (_) => Auth(),
-  child: MyApp(),));
+      MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -29,39 +27,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: MyHomePage(title: 'Flutter Demo Home Page'),
+        home: Wrapper()
       ),
     );
   }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-        child: Stack(
-            children: <Widget>[
-              Scaffold(
-                  body: LoginScreen()
-              ),
-              IgnorePointer(
-                  child: AnimationScreen(
-                      color: Theme.of(context).accentColor
-                  )
-              )
-            ]
-        )
-    );
-  }
-
-
 }
