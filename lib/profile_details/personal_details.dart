@@ -126,67 +126,7 @@ class _PersonalDetailState extends State<PersonalDetail> {
                     ),
                   ],
                 ),
-                SizedBox(height: 10.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(left: 15.0),
-                            child: FieldTitleWithIcon(
-                              title: "Nationality",
-                              icon: Icons.flag,
-                            ),
-                          ),
-                          Text("Personal Details"),
-                          ProfileInputField(
-                            initValue: widget.nationality,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(left: 15.0),
-                            child: FieldTitleWithIcon(
-                              title: "National ID No.",
-                              icon: Icons.contact_mail,
-                            ),
-                          ),
-                          ProfileInputField(
-                            initValue: widget.nid,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(left: 15.0),
-                            child: FieldTitleWithIcon(
-                              title: "Gender",
-                              icon: Icons.supervisor_account,
-                            ),
-                          ),
-                          ProfileInputField(
-                            initValue: widget.gender,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+
               ],
             ),
           ),
