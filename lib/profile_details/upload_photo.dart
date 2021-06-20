@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sahlhaly_event_planner/style.dart';
+import '../Component/style.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 

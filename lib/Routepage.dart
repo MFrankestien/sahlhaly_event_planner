@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'Component/bottom_nav_bar.dart';
+import 'Component/drawer.dart';
 class Route extends StatefulWidget {
   @override
   _RouteState createState() => _RouteState();

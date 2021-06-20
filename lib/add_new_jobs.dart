@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
-import 'package:sahlhaly_event_planner/style.dart';
+import 'Component/style.dart';
 
 class AddNewevent extends StatefulWidget {
   @override

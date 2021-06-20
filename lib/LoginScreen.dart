@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Register/Login_info_page.dart';
 import 'package:sahlhaly_event_planner/reset_password.dart';
-import 'package:sahlhaly_event_planner/style.dart';
+import 'Component/style.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

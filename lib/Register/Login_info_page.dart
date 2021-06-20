@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sahlhaly_event_planner/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../style.dart';
+import '../Component/style.dart';
 
 class PasswordPage extends StatefulWidget {
 

@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sahlhaly_event_planner/bottomInfoBar.dart';
-import 'package:sahlhaly_event_planner/style.dart';
+import 'package:sahlhaly_event_planner/Component/bottomInfoBar.dart';
+
+import '../Component/style.dart';
 import 'package:sahlhaly_event_planner/utils/constants.dart';
 
 class EditPersonalDetails extends StatefulWidget {

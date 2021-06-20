@@ -3,7 +3,7 @@ import 'package:sahlhaly_event_planner/Register/select_gender_page.dart';
 import 'package:sahlhaly_event_planner/utils/constants.dart';
 
 
-import '../style.dart';
+import '../Component/style.dart';
 
 
 class NamePage extends StatefulWidget {

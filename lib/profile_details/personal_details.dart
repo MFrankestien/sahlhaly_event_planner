@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/profile_details/upload_photo.dart';
-import 'package:sahlhaly_event_planner/style.dart';
+import '../Component/style.dart';
 import 'package:sahlhaly_event_planner/utils/constants.dart';
 import 'edit_personal_details.dart';
 
