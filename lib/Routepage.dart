@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sahlhaly_event_planner/Component/app_bar.dart';
+import 'package:sahlhaly_event_planner/HomePage.dart';
 import 'Component/bottom_nav_bar.dart';
 import 'Component/drawer.dart';
 class Route extends StatefulWidget {
@@ -67,7 +69,7 @@ class _RouteState extends State<Route> {
         onPageChanged: onPageChanged,
         children: [
           HomePage(),
-          SingleEvent()
+
         ],
       ),);
   }
