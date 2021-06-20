@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sahlhaly_event_planner/profile_details/personal_details.dart';
+
 
 
 class SuccessPage extends StatefulWidget {
@@ -102,13 +104,12 @@ class _SuccessPageState extends State<SuccessPage> {
                           children: <Widget>[
                             GestureDetector(
                               onTap: () async {
-                                 // await getusertype();
 
-                              /*  Navigator.push(
+                                Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            ProfileMain(userid: userid)))*/
+                                            PersonalDetail()));
 
                               },
                               child: Card(
