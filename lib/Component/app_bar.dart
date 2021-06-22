@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sahlhaly_event_planner/profile_details/personal_details.dart';
 
 
 AppBar buildAppBar(BuildContext context,
@@ -16,8 +17,18 @@ AppBar buildAppBar(BuildContext context,
     centerTitle: true,
     actions: [
       IconButton(
-        icon: ClipOval(child: Image.asset("assets/dance.jpg")),
-        onPressed: () {},
+        icon: CircleAvatar(
+  radius: 50.0,
+      backgroundImage: NetworkImage("https://i.stack.imgur.com/l60Hf.png")
+  ),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PersonalDetail(
+                  )));
+
+        },
       )
     ],
   );

@@ -123,23 +123,11 @@ class _HomePageState extends State<HomePage> {
                                 MainAxisAlignment.center,
                                 children: <Widget>[
                                   Text(
-                                    "Event",
+                                    "BusinessMan Events",
                                     style: TextStyle(
                                         color: Theme.of(context)
                                             .accentColor,
                                         fontSize: 23.0),
-                                  ),
-                                  Padding(
-                                    padding:
-                                    const EdgeInsets.only(
-                                        left: 20),
-                                    child: Text(
-                                      "firmtext",
-                                      style: TextStyle(
-                                          color: Theme.of(context)
-                                              .accentColor,
-                                          fontSize: 15.0),
-                                    ),
                                   ),
                                 ],
                               )
@@ -186,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                                   right: 20,
                                   bottom: 20),
                               child: Icon(
-                                FontAwesomeIcons.userAlt,
+                                FontAwesomeIcons.building,
                                 size: 40.0,
                                 color: Colors.white,
                               ),
@@ -202,18 +190,11 @@ class _HomePageState extends State<HomePage> {
                                   MainAxisAlignment.center,
                                   children: <Widget>[
                                     Text(
-                                      "jobSeeker",
+                                      "Organization Events",
                                       style: TextStyle(
                                           color: Theme.of(context)
                                               .accentColor,
                                           fontSize: 23.0),
-                                    ),
-                                    Text(
-                                      "jobSeekertext",
-                                      style: TextStyle(
-                                          color: Theme.of(context)
-                                              .accentColor,
-                                          fontSize: 15.0),
                                     ),
                                   ],
                                 ),
@@ -238,42 +219,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildUpcomingEventsTitle() {
-    return Container(
-      padding: EdgeInsets.only(left: 16, right: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            'Upcoming Event',
-            style: TextStyle(
-              color: Colors.grey[800],
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              //TODO implement navigator.push method,
-
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (_)=>Listings(),
-              ));
-            },
-            child: Text(
-              'View All',
-              style: TextStyle(
-                color: Colors.lightBlue[200],
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
 
   Widget buildExpandableChildren() {
     return Container(
@@ -461,29 +406,5 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-  Widget eventsSlider(){
 
-    return Expanded(
-      child: ListView.builder(
-        itemCount: events.length,
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemBuilder: (context,index){
-          var event=events[index];
-
-          return SingleEvent(
-            eventDate: event.eventDate,
-            eventType: event.eventType,
-            eventImage: event.eventImage,
-            eventName: event.eventName,
-            eventOfferText: event.eventOfferText,
-            eventVenue: event.eventVenue,
-            guestName: event.guestName,
-            guestDesignation: event.guestDesignation,
-            guestPicture: event.guestPicture,
-          );
-        },
-      ),
-    );
-  }
 }

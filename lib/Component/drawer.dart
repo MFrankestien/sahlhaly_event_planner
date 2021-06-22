@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/payment.dart';
+import 'package:sahlhaly_event_planner/profile_details/personal_details.dart';
 
 
 class MainDrawer extends StatelessWidget {
@@ -19,7 +20,7 @@ class MainDrawer extends StatelessWidget {
 
               CircleAvatar(
                 radius: 50.0,
-                backgroundImage: AssetImage("assets/football.jpg")
+                backgroundImage: NetworkImage("https://i.stack.imgur.com/l60Hf.png")
               ),
               SizedBox(
                 height: 5.0,
@@ -49,7 +50,14 @@ class MainDrawer extends StatelessWidget {
       //Now let's Add the button for the Menu
       //and let's copy that and modify it
       ListTile(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PersonalDetail(
+                  )));
+
+        },
         leading: Icon(
           Icons.person,
           color: Colors.black,

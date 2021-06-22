@@ -1,37 +1,36 @@
-import 'dart:io';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:path/path.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:intl/intl.dart';
 import 'package:sahlhaly_event_planner/Component/style.dart';
+import 'package:sahlhaly_event_planner/Routepage.dart';
+import 'package:sahlhaly_event_planner/models/event_model.dart';
 
 
 class AddNewevent extends StatefulWidget {
+
+
   @override
   _AddNeweventState createState() => _AddNeweventState();
 }
 
 class _AddNeweventState extends State<AddNewevent> {
-  String jobvacancy;
-  String jobTitle;
-  String salary;
-  String firmName,firmId;
-  String requiredEducation;
-  String jobDescription;
-  String jobRequirements;
+  String EventTitle;
+  String EventBudget;
+  String AudinceNumber;
+  String EventEquieoment;
+  String EventIdea;
+  String EventAds = 'Select Event Ads';
   String city = 'Select City';
-  String JobCat = 'Select Job Categories';
-  String JobNature = 'Select Job Nature';
-  File _image;
-  String urls;
+  String EventCat = 'Select Event Categories';
+  String EventTime = 'Select Event Time';
   final _formkeyNJ = GlobalKey<FormState>();
-
-  String type;
+  final _eventModel = EventModel();
+  String type='bm';
 
 
 
@@ -81,63 +80,19 @@ class _AddNeweventState extends State<AddNewevent> {
                         SizedBox(
                           height: 10,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Align(
-                              alignment: Alignment.center,
-                              child: CircleAvatar(
-                                radius: 70,
-                                backgroundColor: Color(0xff476cfb),
-                                child: ClipOval(
-                                  child: new SizedBox(
-                                      width: 150.0,
-                                      height: 150.0,
-                                      child: (_image != null)
-                                          ? Image.file(
-                                              _image,
-                                              fit: BoxFit.fill,
-                                            )
-                                          : (urls != null)
-                                              ? Image.network(
-                                                  urls,
-                                                  fit: BoxFit.fill,                                                )
-                                              : Image(
-                                                  image: AssetImage(
-                                                      'assets/images/jobdefault.png'),
-                                                )),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 60.0),
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.add_a_photo,
-                                  size: 40.0,
-                                ),
-                                onPressed: () {
 
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
                         TextFormField(
                             validator: (val) =>
-                                val.isEmpty ? 'Enter Job Title' : null,
+                                val.isEmpty ? 'Enter Event Name' : null,
                             onChanged: (val) {
-                              setState(() => jobTitle = val);
+                              setState(() => EventTitle = val);
                             },
                             style: TextStyle(
                               fontSize: 18.0,
                               color: Colors.teal,
                             ),
                             decoration: InputDecoration(
-                              hintText: "Job Title",
+                              hintText: "Event Name",
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.blueAccent, width: 32.0),
@@ -146,9 +101,9 @@ class _AddNeweventState extends State<AddNewevent> {
                         Divider(),
                         TextFormField(
                             validator: (val) =>
-                                val.isEmpty ? 'Enter Salary' : null,
+                                val.isEmpty ? 'Enter Event Budget' : null,
                             onChanged: (val) {
-                              setState(() => salary = val);
+                              setState(() => EventBudget = val);
                             },
                             style: TextStyle(
                               fontSize: 18.0,
@@ -156,7 +111,7 @@ class _AddNeweventState extends State<AddNewevent> {
                             ),
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: 'Salary',
+                              labelText: 'Event Budget',
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.blueAccent, width: 32.0),
@@ -164,40 +119,26 @@ class _AddNeweventState extends State<AddNewevent> {
                             )),
                         Divider(),
                         TextFormField(
+                            keyboardType: TextInputType.number,
                             validator: (val) =>
-                                val.isEmpty ? 'Enter Firm Name' : null,
+                                val.isEmpty ? 'Enter Audince Number' : null,
                             onChanged: (val) {
-                              setState(() => firmName = val);
+                              setState(() => AudinceNumber = val);
                             },
                             style: TextStyle(
                               fontSize: 18.0,
                               color: Colors.teal,
                             ),
                             decoration: InputDecoration(
-                              labelText: 'Firm Name',
+                              labelText: 'Audince Number',
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.blueAccent, width: 32.0),
                                   borderRadius: BorderRadius.circular(10.0)),
                             )),
                         Divider(),
-                        TextFormField(
-                            validator: (val) =>
-                                val.isEmpty ? 'Enter Required Education' : null,
-                            onChanged: (val) {
-                              setState(() => requiredEducation = val);
-                            },
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              color: Colors.teal,
-                            ),
-                            decoration: InputDecoration(
-                              labelText: 'Required Education',
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.blueAccent, width: 32.0),
-                                  borderRadius: BorderRadius.circular(10.0)),
-                            )),
+
+
                         Divider(),
                         DropdownButton<String>(
                           value: city,
@@ -273,8 +214,8 @@ class _AddNeweventState extends State<AddNewevent> {
                         ),
                         Divider(),
                         DropdownButton<String>(
-                          value: JobNature,
-                          icon: Icon(Icons.location_city),
+                          value: EventTime,
+                          icon: Icon(Icons.watch_later_outlined),
                           iconSize: 20,
                           elevation: 16,
                           style: TextStyle(color: Color(0xFF203354)),
@@ -284,17 +225,15 @@ class _AddNeweventState extends State<AddNewevent> {
                           ),
                           onChanged: (String newValue) {
                             setState(() {
-                              JobNature = newValue;
+                              EventTime = newValue;
                             });
                           },
                           items: <String>[
-                            'Select Job Nature',
-                            'Part Time',
-                            'Full Time',
-                            'Contract',
-                            'internship',
-                            'Freelance',
-
+                            'Select Event Time',
+                            'First Quarter',
+                            'Middle Quarter',
+                            'Second Quarter',
+                            'End',
                           ].map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -307,7 +246,7 @@ class _AddNeweventState extends State<AddNewevent> {
                         ),
                         Divider(),
                         DropdownButton<String>(
-                          value: JobCat,
+                          value: EventCat,
                           icon: Icon(FontAwesomeIcons.briefcase),
                           iconSize: 20,
                           elevation: 16,
@@ -318,38 +257,21 @@ class _AddNeweventState extends State<AddNewevent> {
                           ),
                           onChanged: (String newValue) {
                             setState(() {
-                              JobCat = newValue;
+                              EventCat = newValue;
                             });
                           },
                           items: <String>[
-                            'Select Job Categories',
-                            'Accounting/Finance',
-                            'Bank',
-                            'Non-Bank Fin. Institution',
-                            'Commercial/Supply Chain',
-                            'Education/Training',
-                            'Engineer/Architects',
-                            'Garments/Textile',
-                            'HR/Org. Development',
-                            'Gen Mgt/Admin',
-                            'Design/Creative',
-                            'Production/Operation',
-                            'Hospitality/Travel/Tourism',
-                            'Beauty Care/Health & Fitness',
-                            'Electrician/Construction/Repair',
-                            'IT & Telecommunication',
-                            'Marketing/Sales',
-                            'Customer Support/Call Centre',
-                            'Media/Ad./Event Mgt.',
-                            'Medical/Pharma',
-                            'Agro(Plant/Animal/Fisheries)',
-                            'NGO/Development',
-                            'Research/Consultancy',
-                            'Secretary/Receptionist',
-                            'Data Entry/Operator/BPO',
-                            'Driving/Motor Technician',
-                            'Security/Support Service',
-                            'Law/Legal',
+                            'Select Event Categories',
+                            'Personal Event',
+                            'Organizational Event',
+                            'Management Event',
+                            'Culture Event',
+                            'Special Planning Event',
+                            'Entertainment Event',
+                            'Design Event',
+                            'Coordinator Event',
+                            'Conference Event',
+                            'Work Shop ',
                             'Others'
                           ].map((String value) {
                             return DropdownMenuItem<String>(
@@ -362,6 +284,39 @@ class _AddNeweventState extends State<AddNewevent> {
                           }).toList(),
                         ),
                         Divider(),
+                        DropdownButton<String>(
+                          value: EventAds,
+                          icon: Icon(Icons.connected_tv),
+                          iconSize: 20,
+                          elevation: 16,
+                          style: TextStyle(color: Color(0xFF203354)),
+                          underline: Container(
+                            height: 2,
+                            color: Colors.blueAccent,
+                          ),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              EventAds = newValue;
+                            });
+                          },
+                          items: <String>[
+                            'Select Event Ads',
+                            'Facebook',
+                            'Google',
+                            'Instagram',
+                            'Tv',
+                            'Area',
+                            'Others'
+                          ].map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(
+                                value,
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            );
+                          }).toList(),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
@@ -379,19 +334,18 @@ class _AddNeweventState extends State<AddNewevent> {
                         ),
                         Divider(),
                         TextFormField(
-                          keyboardType: TextInputType.number,
-                          inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
                             validator: (val) =>
-                                val.isEmpty ? 'Enter Job Vacancy' : null,
+                            val.isEmpty ? 'Enter Event Equieoment' : null,
                             onChanged: (val) {
-                              setState(() => jobvacancy = val);
+                              setState(() => EventEquieoment = val);
                             },
+                            maxLines: 10,
                             style: TextStyle(
                               fontSize: 18.0,
                               color: Colors.teal,
                             ),
                             decoration: InputDecoration(
-                              hintText: "Vacancy Number",
+                              hintText: 'Event Equieoment',
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.blueAccent, width: 32.0),
@@ -400,9 +354,9 @@ class _AddNeweventState extends State<AddNewevent> {
                         Divider(),
                         TextFormField(
                             validator: (val) =>
-                                val.isEmpty ? 'Enter Job Vacancy' : null,
+                                val.isEmpty ? 'Enter Event Idea' : null,
                             onChanged: (val) {
-                              setState(() => jobDescription = val);
+                              setState(() => EventIdea = val);
                             },
                             maxLines: 10,
                             style: TextStyle(
@@ -410,26 +364,7 @@ class _AddNeweventState extends State<AddNewevent> {
                               color: Colors.teal,
                             ),
                             decoration: InputDecoration(
-                              hintText: 'Job Description',
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.blueAccent, width: 32.0),
-                                  borderRadius: BorderRadius.circular(10.0)),
-                            )),
-                        Divider(),
-                        TextFormField(
-                            validator: (val) =>
-                                val.isEmpty ? 'Enter Job Requirements' : null,
-                            onChanged: (val) {
-                              setState(() => jobRequirements = val);
-                            },
-                            maxLines: 10,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              color: Colors.teal,
-                            ),
-                            decoration: InputDecoration(
-                              hintText: 'Job Requirements',
+                              hintText: 'Event Idea',
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.blueAccent, width: 32.0),
@@ -449,23 +384,30 @@ class _AddNeweventState extends State<AddNewevent> {
           child: Icon(Icons.add),
           backgroundColor: Colors.blueAccent,
           onPressed: () async {
-            if (_formkeyNJ.currentState.validate())/* {
-              FirebaseUser user = await FirebaseAuth.instance.currentUser();
-              firmId=user.uid;
-              _jobOperation.addJob(JobsHot(
-                  JobCat: JobCat,
-                JobNature: JobNature,
-                firmid: firmId,
-                  companyName: firmName,
-                  title: jobTitle,
-                  image: urls,
-                  deadline: _formatDate,
-                  vacancies: jobvacancy,
-                  salary: salary,
-                  description: jobDescription,
-                  requirement: jobRequirements,
+            if (_formkeyNJ.currentState.validate()){
+              print(EventTitle);
+              print(EventBudget);
+              print(AudinceNumber);
+              print(city);
+              print(EventTime);
+              print(EventCat);
+              print(EventAds);
+              print(_formatDate);
+              print(EventIdea);
+              print(EventEquieoment);
+
+              _eventModel.addEvent(EventModel(
+                  eventName: EventTitle,
+                  eventBudget:EventBudget,
+                  audNum: AudinceNumber,
                   location: city,
-                  education: requiredEducation));
+                  eventTime: EventTime,
+                  eventCat: EventCat,
+                  eventAds: EventAds,
+                  deadline: _formatDate,
+                  eventEqu: EventEquieoment,
+                  eventIdea: EventIdea,
+                  type: type));
               Fluttertoast.showToast(
                   msg: "Job Added Succefully",
                   toastLength: Toast.LENGTH_SHORT,
@@ -476,8 +418,8 @@ class _AddNeweventState extends State<AddNewevent> {
                   fontSize: 16.0
               );
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FirmHomePage()));
-            }*/
+                  MaterialPageRoute(builder: (context) => RoutePage()));
+            }
           ;}),
     );
   }
