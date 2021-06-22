@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sahlhaly_event_planner/LoginScreen.dart';
+import 'package:sahlhaly_event_planner/Routepage.dart';
 
 import 'models/user.dart';
 
@@ -22,11 +23,11 @@ Wrapper({this.id, this.UserType});
     if (user == null) {
       print(user);
       print('hi jobs');
-      return CircularProgressIndicator();
+      return LoginScreen();
     }
     else {
 
-      return LoginScreen();
+      return RoutePage();
 
       }
 

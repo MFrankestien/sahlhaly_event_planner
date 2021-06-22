@@ -3,12 +3,12 @@ import 'package:sahlhaly_event_planner/Component/app_bar.dart';
 import 'package:sahlhaly_event_planner/HomePage.dart';
 import 'Component/bottom_nav_bar.dart';
 import 'Component/drawer.dart';
-class Route extends StatefulWidget {
+class RoutePage extends StatefulWidget {
   @override
-  _RouteState createState() => _RouteState();
+  _RoutePageState createState() => _RoutePageState();
 }
 
-class _RouteState extends State<Route> {
+class _RoutePageState extends State<RoutePage> {
   PageController pageController;
   int pageIndex = 0;
   onPageChanged(int pageIndex) {
