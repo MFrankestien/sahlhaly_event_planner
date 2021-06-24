@@ -18,28 +18,6 @@ FloatingActionButton floatingActionButtonNext(
   );
 }
 
-// BACKGROUND //////////////////////////////////////////////////////////////////////
-class BackgroundWidget extends StatelessWidget {
-  const BackgroundWidget({
-    Key key,
-    @required this.size,
-  }) : super(key: key);
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: new Image.asset('assets/images/bottombackground.png',
-          width: size.width,
-          height: size.height,
-          fit: BoxFit.cover,
-          color: Color.fromRGBO(255, 255, 255, 0.7),
-          colorBlendMode: BlendMode.modulate),
-    );
-  }
-}
-
 // BACK BUTTON ///////////////////////////////////////////////////////////////////////////////
 class BackButtonPop extends StatelessWidget {
   const BackButtonPop({

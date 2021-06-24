@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/payment.dart';
 import 'package:sahlhaly_event_planner/profile_details/personal_details.dart';
+import 'package:sahlhaly_event_planner/services/auth.dart';
 
 
 class MainDrawer extends StatelessWidget {
@@ -107,7 +108,9 @@ class MainDrawer extends StatelessWidget {
       ),
 
       ListTile(
-        onTap: () {},
+        onTap: () {
+          AuthService().signOut();
+        },
         leading: Icon(
           Icons.logout,
           color: Colors.black,
