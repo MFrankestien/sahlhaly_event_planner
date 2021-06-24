@@ -158,7 +158,7 @@ class _SelectGenderState extends State<SelectGender> {
               choice = 'Male';
               print(choice);
               await AuthService(uid: userid).updateUserData(
-                  fname, lname, phone,  choice,nid);
+                  fname, lname, phone,  choice,nid,"user");
             } else {
               choice = 'Female';
               print(choice);
@@ -168,7 +168,7 @@ class _SelectGenderState extends State<SelectGender> {
               print(nid);
 
               await AuthService(uid: userid).updateUserData(
-                  fname, lname, phone,  choice,nid);
+                  fname, lname, phone,  choice,nid,"user");
             }
             Navigator.pushReplacement(
                 context,

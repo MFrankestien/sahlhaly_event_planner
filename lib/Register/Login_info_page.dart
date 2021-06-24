@@ -235,7 +235,7 @@ class _PasswordPageState extends State<PasswordPage> {
             });
             } else {
               await AuthService(uid: result.uid)
-                  .updateUserData('Complete your info', 'Complete your info', 'Complete your info', 'Complete your info','Complete your info');
+                  .updateUserData('Complete your info', 'Complete your info', 'Complete your info', 'Complete your info','Complete your info','Complete your info');
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(

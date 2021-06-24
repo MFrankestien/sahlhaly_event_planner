@@ -6,8 +6,8 @@ import 'package:sahlhaly_event_planner/services/auth.dart';
 import 'package:sahlhaly_event_planner/wrapper.dart';
 
 
-class MainDrawer extends StatelessWidget {
-  const MainDrawer({Key key}) : super(key: key);
+class MainDrawera extends StatelessWidget {
+  const MainDrawera({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class MainDrawer extends StatelessWidget {
                 height: 5.0,
               ),
               Text(
-                "name",
+                "admin",
                 style: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.w800,
@@ -65,6 +65,20 @@ class MainDrawer extends StatelessWidget {
           color: Colors.black,
         ),
         title: Text("Your Profile"),
+      ),
+
+      ListTile(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MasterCard()),
+          );
+        },
+        leading: Icon(
+          Icons.request_page,
+          color: Colors.black,
+        ),
+        title: Text("Event Requests"),
       ),
 
       ListTile(

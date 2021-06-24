@@ -1,9 +1,11 @@
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Register/Login_info_page.dart';
 import 'package:sahlhaly_event_planner/Routepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Register/reset_password.dart';
 import 'Component/style.dart';
 
@@ -18,6 +20,22 @@ class _LoginScreenState extends State<LoginScreen> {
   String error = '';
   final _formKey = GlobalKey<FormState>();
   final FirebaseAuth auth = FirebaseAuth.instance;
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  String type,id;
+
+
+  getusertype() async{
+   User userid = await auth.currentUser;
+    id=userid.uid;
+    var usertype=await _firestore.collection('Users').doc(userid.uid).get().then
+      ((DocumentSnapshot) async {
+      type = DocumentSnapshot.data()['UserType'];
+      SharedPreferences preferences=await SharedPreferences.getInstance();
+      preferences.setString("id", id);
+      preferences.setString("UserType",DocumentSnapshot.data()['UserType'] );
+      print("type $type");
+    });}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,10 +157,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                  try{
                                    dynamic result =
                                    await auth.signInWithEmailAndPassword(email: email.trim(), password: password.toLowerCase());
-                                   Navigator.pushReplacement(
-                                       context,
-                                       MaterialPageRoute(
-                                           builder: (context) => RoutePage()));
+                                   await getusertype().then(
+                                       Navigator.pushReplacement(
+                                           context,
+                                           MaterialPageRoute(
+                                               builder: (context) => RoutePage()))
+
+                                   );
+
 
 
                                  }catch(e){
@@ -214,26 +236,6 @@ class _LoginScreenState extends State<LoginScreen> {
   //button to login in using scial media,
 
 
-  _inputTextField(hintText, bool obscuretext) {
-    return Container(
-      height: 56,
-      padding: EdgeInsets.fromLTRB(16, 3, 16, 6),
-      margin: EdgeInsets.all(8),
-      decoration: raisedDecoration,
-      child: Center(
-        child: TextField(
-          obscureText: obscuretext,
-          decoration: InputDecoration(
-              border: InputBorder.none,
-
-              hintText: hintText,
-              hintStyle: TextStyle(
-                color: Colors.black38,
-              )),
-        ),
-      ),
-    );
-  }
 
   _labelText(title) {
     return Padding(
@@ -257,7 +259,7 @@ class _LoginScreenState extends State<LoginScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
-            'Create\nYour\nAccount',
+            'Login\nWith Your\nAccount',
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,

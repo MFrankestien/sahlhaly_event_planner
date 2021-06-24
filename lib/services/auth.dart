@@ -47,13 +47,14 @@ class AuthService {
 
   // Updating User Data
   Future<void> updateUserData(
-      String fName, String lName, String phone, String gender,String nid) async {
+      String fName, String lName, String phone, String gender,String nid,String utype) async {
     return await GustesCollection.doc(uid).set({
       'FirstName': fName,
       'LastName': lName,
       'Phone': phone,
       'Gender': gender,
-      'NationalID':nid
+      'NationalID':nid,
+      'UserType':utype
     });
   }
 

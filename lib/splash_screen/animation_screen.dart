@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/LoginScreen.dart';
 import 'package:sahlhaly_event_planner/wrapper.dart';
@@ -20,6 +21,7 @@ class _AnimationScreenState extends State<AnimationScreen> with SingleTickerProv
   AnimationController _controller;
   StaggeredRaindropAnimation _animation;
   Animation<double> _scale2Animation;
+
 
   @override
   void initState() {
@@ -88,7 +90,7 @@ class _AnimationScreenState extends State<AnimationScreen> with SingleTickerProv
           )
         ),
         Padding(
-          padding: EdgeInsets.only(bottom: 32),
+          padding: EdgeInsets.only(bottom: 80),
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Opacity(
