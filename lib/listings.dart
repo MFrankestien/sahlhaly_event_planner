@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sahlhaly_event_planner/single_event_widget.dart';
-import 'models/event_model.dart';
+
 
 class Listings extends StatefulWidget {
   @override
@@ -18,13 +17,12 @@ class _ListingsState extends State<Listings> {
         children: <Widget>[
           guestsSlider(),
 
-          eventsSlider(),
         ],
       ),
     );
   }
 
-  Widget eventsSlider(){
+  /*Widget eventsSlider(){
 
     return Expanded(
       child: ListView.builder(
@@ -48,7 +46,7 @@ class _ListingsState extends State<Listings> {
         },
       ),
     );
-  }
+  }*/
 
   Widget guestsSlider() {
     return Container(

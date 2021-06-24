@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Register/Login_info_page.dart';
-import 'package:sahlhaly_event_planner/reset_password.dart';
+import 'package:sahlhaly_event_planner/Routepage.dart';
+import 'Register/reset_password.dart';
 import 'Component/style.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -138,6 +139,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                  try{
                                    dynamic result =
                                    await auth.signInWithEmailAndPassword(email: email.trim(), password: password.toLowerCase());
+                                   Navigator.pushReplacement(
+                                       context,
+                                       MaterialPageRoute(
+                                           builder: (context) => RoutePage()));
 
 
                                  }catch(e){

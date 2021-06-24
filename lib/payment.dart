@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:flutter/services.dart';
 import 'package:sahlhaly_event_planner/Component/app_bar.dart';
+import 'package:sahlhaly_event_planner/Routepage.dart';
 
 class MasterCard extends StatefulWidget {
   @override
@@ -354,7 +355,10 @@ class _MasterCardState extends State<MasterCard>
       ]),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => RoutePage()),
+          );
         },
         label: Text('Confirm'),
         icon: Icon(Icons.payment_rounded),

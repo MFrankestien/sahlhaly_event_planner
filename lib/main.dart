@@ -1,11 +1,10 @@
-import 'package:sahlhaly_event_planner/authP.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sahlhaly_event_planner/models/user.dart';
 import 'package:sahlhaly_event_planner/services/auth.dart';
 import 'package:sahlhaly_event_planner/splash_screen/animation_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sahlhaly_event_planner/wrapper.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +26,11 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: Wrapper()
+        home: IgnorePointer(
+            child: AnimationScreen(
+                color: Theme.of(context).accentColor
+            )
+        )
       ),
     );
   }

@@ -1,6 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Component/app_bar.dart';
 import 'package:sahlhaly_event_planner/HomePage.dart';
+import 'package:sahlhaly_event_planner/models/event_model.dart';
+import 'package:sahlhaly_event_planner/single_event_widget.dart';
 import 'Component/bottom_nav_bar.dart';
 import 'Component/drawer.dart';
 class RoutePage extends StatefulWidget {
@@ -53,12 +56,9 @@ class _RoutePageState extends State<RoutePage> {
         ),
         BottomNavBarItem(
             icon: Icon(Icons.whatshot),
-            title: Text('Hot Jobs'),
+            title: Text('Hot Events'),
             activeColor: Colors.teal),
-        BottomNavBarItem(
-            icon: Icon(Icons.ac_unit),
-            title: Text('More'),
-            activeColor: Colors.blueGrey),
+
       ],
     ),
       appBar: buildAppBar(context,isTransparent: true),
@@ -73,5 +73,4 @@ class _RoutePageState extends State<RoutePage> {
         ],
       ),);
   }
-
 }
