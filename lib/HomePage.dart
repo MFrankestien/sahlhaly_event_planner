@@ -274,7 +274,7 @@ class _HomePageState extends State<HomePage> {
   Container buildMainHeader() {
     return Container(
       padding: EdgeInsets.fromLTRB(24, 66, 24, 24),
-      height: 350,
+      height: 300,
       width: double.infinity,
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -297,11 +297,7 @@ class _HomePageState extends State<HomePage> {
 
           SizedBox(height: 12),
           buildSearchBar(),
-          SizedBox(height: 12),
-          Text(
-            'Tap Button to create events',
-            style: mainSubtitleStyle,
-          ),
+
         ],
       ),
     );
