@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EventModel {
-  String eventName,
+  String eventId,
+      eventName,
       eventBudget,
       audNum,
       location,
@@ -15,6 +16,7 @@ class EventModel {
 
   //Contructor
   EventModel({
+    this.eventId,
     this.eventName,
     this.eventBudget,
     this.audNum,

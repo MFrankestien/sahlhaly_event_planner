@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Component/app_bar.dart';
 import 'package:sahlhaly_event_planner/Events/eventsOperations.dart';
-import 'events_details_page.dart';
+
 
 import 'package:sahlhaly_event_planner/models/event_model.dart';
 
@@ -103,10 +103,7 @@ bool show =true;
       ),
 
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => EventsDetailsPage(eventModel: eventModel,show:show)));
+
       },
     );
 
@@ -127,31 +124,30 @@ bool show =true;
     );
 
     return Scaffold(
-      appBar:buildAppBar(context,isTransparent: true),
+      backgroundColor: Colors.blue[100],
       body:  StreamBuilder<QuerySnapshot>(
-        stream: event.loadvents(),
+        stream: event.loadevents(),
         builder: (context,snapshot) {
           if (snapshot.hasData) {
             List _events = [];
+
             for (var doc in snapshot.data.docs) {
-              var data = doc.data;
+              Map<String, dynamic> data = doc.data();
 
              _events.add(EventModel(
-                 jobId: doc.documentID,
-                 firmid: data['FirmID'],
-                 JobNature: data['Job Nature'],
-                  companyName: data['FirmName'],
-                  title: data['JobTitle'],
-                  requirement: data['JobRequirements'],
-                  salary: data['Salary'],
-                  deadline: data['Deadline'],
-                  description: data['JobDescription'],
-                  education: data['Education'],
-                  image: data['Imageurl'],
-                  location: data['Location'],
-                  vacancies: data['Vacancy']));
+                 eventId: doc.id,
+                 eventName:data['EventName'],
+                 audNum: data['AudinceNum'],
+               deadline: data['Deadline'],
+               eventAds: data['EventAds'],
+               eventBudget: data['eventBudget'],
+               eventCat: data['EventCat'],
+               eventEqu: data['EventEqu'],
+               eventIdea: data['EventIdea'],
+               eventTime: data['EventTime'],
+               location: data['Location'],
+             ));
              print(_events);
-             print('jobs');
             }
             return ListView.builder(
               scrollDirection: Axis.vertical,
