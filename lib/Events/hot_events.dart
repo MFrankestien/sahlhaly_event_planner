@@ -2,7 +2,8 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sahlhaly_event_planner/events_details_page.dart';
+import 'package:sahlhaly_event_planner/Component/app_bar.dart';
+import 'events_details_page.dart';
 
 import 'package:sahlhaly_event_planner/models/event_model.dart';
 
@@ -12,7 +13,7 @@ class Upcommingevents extends StatefulWidget {
 }
 
 class _UpcommingeventsState extends State<Upcommingevents> {
-  final _job = Joboperation();
+  final event = Joboperation();
 List jobs;
 bool show =true;
 
@@ -125,9 +126,9 @@ bool show =true;
     );
 
     return Scaffold(
-      appBar: headder(context, titleText: 'Hot Jobs'),
+      appBar:buildAppBar(context,isTransparent: true),
       body:  StreamBuilder<QuerySnapshot>(
-        stream: _job.loadjob(),
+        stream: event.loadevents(),
         builder: (context,snapshot) {
           if (snapshot.hasData) {
             List _events = [];
