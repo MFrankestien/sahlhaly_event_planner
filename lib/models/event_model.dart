@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EventModel {
   String eventId,
+      image,
       eventName,
       eventBudget,
       audNum,
@@ -17,6 +18,7 @@ class EventModel {
   //Contructor
   EventModel({
     this.eventId,
+    this.image,
     this.eventName,
     this.eventBudget,
     this.audNum,
@@ -47,6 +49,23 @@ class EventModel {
       'Type': eventModel.type,
     });
   }
+
+  addnewEvent(EventModel eventModel) {
+    _firestore.collection('UpEvents').add({
+      'EventName':eventModel.eventName,
+      'EventBudget ':eventModel.eventBudget,
+      'AudinceNum':eventModel.audNum,
+      'Location': eventModel.location,
+      'EventTime': eventModel.eventTime,
+      'EventCat': eventModel.eventCat,
+      'EventAds': eventModel.eventAds,
+      'Deadline': eventModel.deadline,
+      'EventEqu': eventModel.eventEqu,
+      'EventIdea': eventModel.eventIdea,
+      'Type': eventModel.type,
+    });
+  }
+
 
   Stream<QuerySnapshot> loadjob() {
     return _firestore.collection('Events').snapshots();

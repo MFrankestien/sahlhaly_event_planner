@@ -35,12 +35,9 @@ bool show =true;
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            eventModel.eventName,
-            style: TextStyle(fontSize: 15.0),
-          ),
+
           SizedBox(
-            height: 15.0,
+            height: 50.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,7 +56,17 @@ bool show =true;
                   ),
                 ],
               ),
+              
+            ],
+          ),
+          SizedBox(
+            height: 15.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
               Column(
+
                 children: <Widget>[
                   Text(
                     '👥 Audince Num',
@@ -67,39 +74,34 @@ bool show =true;
                         fontSize: 15.0, fontWeight: FontWeight.w700),
                   ),
                   Text(
-                      eventModel.audNum+ ' Positions available ',
+                    eventModel.audNum,
                     style: TextStyle(
                         fontSize: 15.0, fontWeight: FontWeight.w700),
                   ),
                 ],
-              ),//num
-            ],
-          ),
-          SizedBox(
-            height: 15.0,
-          ),
-          Row(
-            children: <Widget>[
-
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      '📋 Event Type:',
-                      style: TextStyle(
-                          fontSize: 15.0, fontWeight: FontWeight.w700),
-                    ),
-                    Text(
-                      eventModel.eventCat,
-                      style: TextStyle(fontSize: 15.0),
-                    ),
-                  ],
-                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    '📋 Event Type:',
+                    style: TextStyle(
+                        fontSize: 15.0, fontWeight: FontWeight.w700),
+                  ),
+                  Text(
+                    eventModel.eventCat,
+                    style: TextStyle(fontSize: 15.0),
+                  ),
+                ],
               ),
             ],
           ),
         ],
+      ),
+      trailing:Image(
+        width: 60.0,
+        height: 60.0,
+        image:NetworkImage(eventModel.image,)
       ),
 
       onTap: () {
@@ -136,6 +138,7 @@ bool show =true;
 
              _events.add(EventModel(
                  eventId: doc.id,
+                 image: data['image'],
                  eventName:data['EventName'],
                  audNum: data['AudinceNum'],
                deadline: data['Deadline'],
