@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Component/app_bar.dart';
 import 'package:sahlhaly_event_planner/Component/draweradmin.dart';
 import 'package:sahlhaly_event_planner/HomePage.dart';
-import 'package:sahlhaly_event_planner/models/event_model.dart';
-import 'package:sahlhaly_event_planner/single_event_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Component/bottom_nav_bar.dart';
 import 'Component/drawer.dart';
@@ -41,7 +39,7 @@ class _RoutePageState extends State<RoutePage> {
 
     var usertype=await _firestore.collection('Users').doc(userid.uid).get().then
       ((DocumentSnapshot) async {
-        
+
         setState(() {
           type = DocumentSnapshot.data()['UserType'];
         });
