@@ -34,7 +34,7 @@ bool show =true;
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            job.companyName,
+            eventModel.eventName,
             style: TextStyle(fontSize: 15.0),
           ),
           SizedBox(
@@ -51,7 +51,7 @@ bool show =true;
                         fontSize: 15.0, fontWeight: FontWeight.w700),
                   ),
                   Text(
-                    job.deadline,
+                   eventModel.deadline,
                     style: TextStyle(
                         fontSize: 15.0, fontWeight: FontWeight.w700),
                   ),
@@ -60,17 +60,17 @@ bool show =true;
               Column(
                 children: <Widget>[
                   Text(
-                    '👥 Vacancies',
+                    '👥 Audince Num',
                     style: TextStyle(
                         fontSize: 15.0, fontWeight: FontWeight.w700),
                   ),
                   Text(
-                      job.vacancies+ ' Positions available ',
+                      eventModel.audNum+ ' Positions available ',
                     style: TextStyle(
                         fontSize: 15.0, fontWeight: FontWeight.w700),
                   ),
                 ],
-              ),
+              ),//num
             ],
           ),
           SizedBox(
@@ -78,33 +78,18 @@ bool show =true;
           ),
           Row(
             children: <Widget>[
+
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      '🎓 Education:',
+                      '📋 Event Type:',
                       style: TextStyle(
                           fontSize: 15.0, fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      job.education,
-                      style: TextStyle(fontSize: 15.0),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      '📋 Job Nature:',
-                      style: TextStyle(
-                          fontSize: 15.0, fontWeight: FontWeight.w700),
-                    ),
-                    Text(
-                      job.JobNature,
+                      eventModel.eventCat,
                       style: TextStyle(fontSize: 15.0),
                     ),
                   ],
@@ -114,12 +99,7 @@ bool show =true;
           ),
         ],
       ),
-      trailing: Image(
-        width: 40.0,
-        height: 40.0,
-        image: (job.image!=null)?NetworkImage(job.image):AssetImage(
-            'assets/images/jobdefault.png'),
-      ),
+
       onTap: () {
         Navigator.push(
             context,
@@ -139,22 +119,22 @@ bool show =true;
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: makeListTile(job),
+          child: makeListTile(eventModel),
         ),
       ),
     );
 
     return Scaffold(
-      appBar: JobSeekerHeader(context, titleText: 'Hot Jobs'),
+      appBar: headder(context, titleText: 'Hot Jobs'),
       body:  StreamBuilder<QuerySnapshot>(
         stream: _job.loadjob(),
         builder: (context,snapshot) {
           if (snapshot.hasData) {
-            List _jobs = [];
-            for (var doc in snapshot.data.documents) {
+            List _events = [];
+            for (var doc in snapshot.data.docs) {
               var data = doc.data;
 
-             _jobs.add(JobsHot(
+             _events.add(EventModel(
                  jobId: doc.documentID,
                  firmid: data['FirmID'],
                  JobNature: data['Job Nature'],
@@ -168,15 +148,15 @@ bool show =true;
                   image: data['Imageurl'],
                   location: data['Location'],
                   vacancies: data['Vacancy']));
-             print(_jobs);
+             print(_events);
              print('jobs');
             }
             return ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              itemCount: _jobs.length,
+              itemCount: _events.length,
               itemBuilder: (BuildContext context, int index) {
-                return makeCard(_jobs[index]);
+                return makeCard(_events[index]);
 
               },
             );
