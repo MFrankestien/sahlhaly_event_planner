@@ -129,7 +129,7 @@ bool show =true;
     return Scaffold(
       appBar:buildAppBar(context,isTransparent: true),
       body:  StreamBuilder<QuerySnapshot>(
-        stream: event.loadevents(),
+        stream: event.loadvents(),
         builder: (context,snapshot) {
           if (snapshot.hasData) {
             List _events = [];

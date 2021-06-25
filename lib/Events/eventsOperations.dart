@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sahlhaly_event_planner/models/event_model.dart';
+
 class Eoboperation {
   final Firestore _firestore = Firestore.instance;
 
-  addJob(JobsHot jobsHot) {
-    _firestore.collection('Jobs').add({
+  addJob(EventModel eventModel) {
+    _firestore.collection('Events').add({
       'Job Nature':jobsHot.JobNature,
       'Job Categories':jobsHot.JobCat,
       'FirmID':jobsHot.firmid,
@@ -19,19 +22,19 @@ class Eoboperation {
     });
   }
 
-  Stream<QuerySnapshot> loadjob() {
-    return _firestore.collection('Jobs').snapshots();
+  Stream<QuerySnapshot> loadvents() {
+    return _firestore.collection('Events').snapshots();
   }
 
 
 
   deleteJob(documentId){
-    _firestore.collection('Jobs').document(documentId).delete();
+    _firestore.collection('Events').document(documentId).delete();
 
   }
 
   editJob(data,documentId){
-    _firestore.collection('Jobs').document(documentId).updateData(data);
+    _firestore.collection('Events').document(documentId).updateData(data);
   }
 
 }
