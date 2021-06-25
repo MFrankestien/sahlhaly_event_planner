@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Component/app_bar.dart';
+import 'package:sahlhaly_event_planner/Events/eventsOperations.dart';
 import 'events_details_page.dart';
 
 import 'package:sahlhaly_event_planner/models/event_model.dart';
@@ -13,7 +14,7 @@ class Upcommingevents extends StatefulWidget {
 }
 
 class _UpcommingeventsState extends State<Upcommingevents> {
-  final event = Joboperation();
+  final event = Eoboperation();
 List jobs;
 bool show =true;
 
