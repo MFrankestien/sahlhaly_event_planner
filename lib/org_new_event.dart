@@ -397,6 +397,7 @@ class _orgeventState extends State<orgevent> {
               print(EventEquieoment);
 
               _eventModel.addEvent(EventModel(
+                  Accepted: false,
                   eventName: EventTitle,
                   eventBudget:EventBudget,
                   audNum: AudinceNumber,
@@ -409,7 +410,7 @@ class _orgeventState extends State<orgevent> {
                   eventIdea: EventIdea,
                   type: type));
               Fluttertoast.showToast(
-                  msg: "Job Added Succefully",
+                  msg: "event Added Succefully",
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.BOTTOM,
                   timeInSecForIosWeb: 1,

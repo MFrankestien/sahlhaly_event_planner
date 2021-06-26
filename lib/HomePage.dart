@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sahlhaly_event_planner/Component/expanded_section.dart';
 import 'package:sahlhaly_event_planner/Component/style.dart';
 import 'package:sahlhaly_event_planner/add_new_event.dart';
+import 'package:sahlhaly_event_planner/org_new_event.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -160,6 +161,10 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
 
                       onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => orgevent()),
+                        );
 
                       },
                       child: Card(
