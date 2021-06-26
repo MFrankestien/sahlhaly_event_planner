@@ -5,10 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sahlhaly_event_planner/Component/expanded_section.dart';
 import 'package:sahlhaly_event_planner/Component/style.dart';
 import 'package:sahlhaly_event_planner/add_new_event.dart';
-import 'package:sahlhaly_event_planner/listings.dart';
-import 'package:sahlhaly_event_planner/single_event_widget.dart';
-import 'package:table_calendar/table_calendar.dart';
-import 'models/event_model.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,8 +14,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool _isExpanded = true;
-  CalendarController _calendarController;
-  int _sliderValue = 0;
   PageController pageController;
   int pageIndex = 0;
   onPageChanged(int pageIndex) {
@@ -44,7 +39,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _calendarController = CalendarController();
     pageController = PageController();
   }
 

@@ -1,12 +1,7 @@
-import 'package:Workplicity/model/JobSeeker.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sahlhaly_event_planner/models/event_model.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:Workplicity/utils/constants.dart';
-import 'package:Workplicity/utils/size_config.dart';
-import 'package:Workplicity/widgets/header.dart';
 import 'dart:async';
 
 class Viewreq extends StatefulWidget {
@@ -38,10 +33,10 @@ class _ViewreqState extends State<Viewreq> {
 
   @override
   Widget build(BuildContext context) {
-    String Email=widget.jobseeker.Email;
-    String fullname=widget.jobseeker.fname+widget.jobseeker.lname;
-    String JobTitle = widget.jobseeker.jobtitle;
-    String CompanyName = widget.jobseeker.CompanyName;
+    String Email=widget.eventModel.Email;
+    String fullname=widget.eventModel.fname+widget.eventModel.lname;
+    String JobTitle = widget.eventModel.jobtitle;
+    String CompanyName = widget.eventModel.CompanyName;
 
     final topContentText = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +52,7 @@ class _ViewreqState extends State<Viewreq> {
                     child: Image(
                       width: 100.0,
                       height: 100.0,
-                      image: (widget.jobseeker.imageurl!=null)?NetworkImage(widget.jobseeker.imageurl):NetworkImage(
+                      image: (widget.eventModel.imageurl!=null)?NetworkImage(widget.eventModel.imageurl):NetworkImage(
                         'https://i.stack.imgur.com/l60Hf.png',
                       ),
                     ),
@@ -72,8 +67,8 @@ class _ViewreqState extends State<Viewreq> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: (widget.jobseeker.name!=null)?Text(
-                            widget.jobseeker.name,
+                          child: (widget.eventModel.name!=null)?Text(
+                            widget.eventModel.name,
                             style: TextStyle(
                                 fontSize: 20.0, color: Colors.white),
                           ):  SizedBox(
@@ -145,8 +140,8 @@ class _ViewreqState extends State<Viewreq> {
                   ),
                   Expanded(
                     flex: 2,
-                    child: (widget.jobseeker.date!=null)?Text(
-                      myFormat.format(widget.jobseeker.date),
+                    child: (widget.eventModel.date!=null)?Text(
+                      myFormat.format(widget.eventModel.date),
                       style: TextStyle(fontSize: 18.0),
                     ):
                     Text('Complete your profile to show '),
@@ -163,8 +158,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.gender!=null)?Text(
-                    widget.jobseeker.gender,
+                  child: (widget.eventModel.gender!=null)?Text(
+                    widget.eventModel.gender,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -181,8 +176,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.religon!=null)?Text(
-                    widget.jobseeker.religon,
+                  child: (widget.eventModel.religon!=null)?Text(
+                    widget.eventModel.religon,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -199,8 +194,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.nationalid!=null)?Text(
-                    widget.jobseeker.nationalid,
+                  child: (widget.eventModel.nationalid!=null)?Text(
+                    widget.eventModel.nationalid,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -242,8 +237,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.City!=null)?Text(
-                    widget.jobseeker.City,
+                  child: (widget.eventModel.City!=null)?Text(
+                    widget.eventModel.City,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -260,8 +255,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.FullAdress!=null)?Text(
-                    widget.jobseeker.FullAdress,
+                  child: (widget.eventModel.FullAdress!=null)?Text(
+                    widget.eventModel.FullAdress,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -278,8 +273,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.Phone!=null)?Text(
-                    widget.jobseeker.Phone,
+                  child: (widget.eventModel.Phone!=null)?Text(
+                    widget.eventModel.Phone,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -296,8 +291,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.Email!=null)?Text(
-                    widget.jobseeker.Email,
+                  child: (widget.eventModel.Email!=null)?Text(
+                    widget.eventModel.Email,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -338,8 +333,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.Objective!=null)?Text(
-                    widget.jobseeker.Objective,
+                  child: (widget.eventModel.Objective!=null)?Text(
+                    widget.eventModel.Objective,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -383,8 +378,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.InstituteName!=null)?Text(
-                    widget.jobseeker.InstituteName,
+                  child: (widget.eventModel.InstituteName!=null)?Text(
+                    widget.eventModel.InstituteName,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -401,8 +396,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.EducationLvl!=null)?Text(
-                    widget.jobseeker.EducationLvl,
+                  child: (widget.eventModel.EducationLvl!=null)?Text(
+                    widget.eventModel.EducationLvl,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -419,8 +414,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.Result!=null)?Text(
-                    widget.jobseeker.Result,
+                  child: (widget.eventModel.Result!=null)?Text(
+                    widget.eventModel.Result,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -437,8 +432,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.PassingYear!=null)?Text(
-                    widget.jobseeker.PassingYear,
+                  child: (widget.eventModel.PassingYear!=null)?Text(
+                    widget.eventModel.PassingYear,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -480,8 +475,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.CompanyName!=null)?Text(
-                    widget.jobseeker.CompanyName,
+                  child: (widget.eventModel.CompanyName!=null)?Text(
+                    widget.eventModel.CompanyName,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -498,8 +493,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.Department!=null)?Text(
-                    widget.jobseeker.Department,
+                  child: (widget.eventModel.Department!=null)?Text(
+                    widget.eventModel.Department,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -517,8 +512,8 @@ class _ViewreqState extends State<Viewreq> {
                   ),
                   Expanded(
                     flex: 2,
-                    child: (widget.jobseeker.Responsabilities!=null)?Text(
-                      widget.jobseeker.Responsabilities,
+                    child: (widget.eventModel.Responsabilities!=null)?Text(
+                      widget.eventModel.Responsabilities,
                       style: TextStyle(fontSize: 18.0),
                     ):
                     Text('Complete your profile to show '),
@@ -535,8 +530,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.StartingYear!=null)?Text(
-                    widget.jobseeker.StartingYear,
+                  child: (widget.eventModel.StartingYear!=null)?Text(
+                    widget.eventModel.StartingYear,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -553,8 +548,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.EndYear!=null)?Text(
-                    widget.jobseeker.EndYear,
+                  child: (widget.eventModel.EndYear!=null)?Text(
+                    widget.eventModel.EndYear,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -610,8 +605,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.FirstLangauge!=null)?Text(
-                    widget.jobseeker.FirstLangauge,
+                  child: (widget.eventModel.FirstLangauge!=null)?Text(
+                    widget.eventModel.FirstLangauge,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -628,8 +623,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.FirstLangReadingLvl!=null)?Text(
-                    widget.jobseeker.FirstLangReadingLvl,
+                  child: (widget.eventModel.FirstLangReadingLvl!=null)?Text(
+                    widget.eventModel.FirstLangReadingLvl,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -646,8 +641,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.FirstLanguageWritingLvl!=null)?Text(
-                    widget.jobseeker.FirstLanguageWritingLvl,
+                  child: (widget.eventModel.FirstLanguageWritingLvl!=null)?Text(
+                    widget.eventModel.FirstLanguageWritingLvl,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -664,8 +659,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.FirstLanguageSpeakingLvl!=null)?Text(
-                    widget.jobseeker.FirstLanguageSpeakingLvl,
+                  child: (widget.eventModel.FirstLanguageSpeakingLvl!=null)?Text(
+                    widget.eventModel.FirstLanguageSpeakingLvl,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -696,8 +691,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.SecondLangauge!=null)?Text(
-                    widget.jobseeker.SecondLangauge,
+                  child: (widget.eventModel.SecondLangauge!=null)?Text(
+                    widget.eventModel.SecondLangauge,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -714,8 +709,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.SecondLangReadingLvl!=null)?Text(
-                    widget.jobseeker.SecondLangReadingLvl,
+                  child: (widget.eventModel.SecondLangReadingLvl!=null)?Text(
+                    widget.eventModel.SecondLangReadingLvl,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -732,8 +727,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.SecondLanguageWritingLvl!=null)?Text(
-                    widget.jobseeker.SecondLanguageWritingLvl,
+                  child: (widget.eventModel.SecondLanguageWritingLvl!=null)?Text(
+                    widget.eventModel.SecondLanguageWritingLvl,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -750,8 +745,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.jobseeker.SecondLanguageSpeakingLvl!=null)?Text(
-                    widget.jobseeker.SecondLanguageSpeakingLvl,
+                  child: (widget.eventModel.SecondLanguageSpeakingLvl!=null)?Text(
+                    widget.eventModel.SecondLanguageSpeakingLvl,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -771,7 +766,7 @@ class _ViewreqState extends State<Viewreq> {
               child: FlatButton(color: Colors.red, onPressed: (){
                 Firestore.instance
                     .collection('Applicants')
-                    .document(widget.jobseeker.docId).updateData({'Accepted':false});
+                    .document(widget.eventModel.docId).updateData({'Accepted':false});
                 CustomLaunch('mailto:$Email?subject=$JobTitle - $CompanyName  &body= Thank you very much $fullname for your interest in employment opportunities with $CompanyName company.\n \nThis message is to inform you that we have selected a candidate who is a match for the job requirements of the position.\n \nWe appreciate you taking the time to apply for employment with our company and wish you the best of luck in your future endeavors.\n \n We have a place for you with us still!!\n\n We have provided a list of feedback on how you can improve yourself down below:\n\n 1-..........\n\n 2-..........\n\n 3-.......... \n\n We wish that you will reach out for us in the future as well after considering our feedback \n\n Best regards,$CompanyName');
               }, child: Text('Reject'),
                ),
@@ -782,7 +777,7 @@ class _ViewreqState extends State<Viewreq> {
 
                   Firestore.instance
                       .collection('Applicants')
-                      .document(widget.jobseeker.docId).updateData({'Accepted':true});
+                      .document(widget.eventModel.docId).updateData({'Accepted':true});
                   CustomLaunch('mailto:$Email?subject=$JobTitle - $CompanyName &body= Hello MR/Mrs $fullname \n \n We extend our gratitude and would like to inform you for being accepted for the position of $JobTitle in $CompanyName.\n \n We are delighted and looking forward to commencing work with you.\n \n Best Regards, $CompanyName');
 
                 }, child: Text('Accept')),
@@ -797,7 +792,7 @@ class _ViewreqState extends State<Viewreq> {
     return WillPopScope(
       onWillPop: () => Future.value(true),
       child: Scaffold(
-        appBar: CReview(context, titleText: 'C.V Review',docid: widget.jobseeker.docId),
+        appBar: CReview(context, titleText: 'C.V Review',docid: widget.eventModel.docId),
         body: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
           child: Column(

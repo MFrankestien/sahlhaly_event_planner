@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -31,9 +32,20 @@ class _AddNeweventState extends State<AddNewevent> {
   final _formkeyNJ = GlobalKey<FormState>();
   final _eventModel = EventModel();
   String type='bm';
+  String useremail='';
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  Future getuseremail() async {
+    User userid = auth.currentUser;
 
+      setState(() {
+        useremail = userid.email;
+      });
+
+      print("$useremail");
+    }
   DateTime _date = DateTime.now();
 
   Future<Null> selectDate(BuildContext context) async {
@@ -51,8 +63,10 @@ class _AddNeweventState extends State<AddNewevent> {
   }
 
 
-
-
+  @override
+  void initState() {
+    getuseremail();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -397,6 +411,7 @@ class _AddNeweventState extends State<AddNewevent> {
               print(EventEquieoment);
 
               _eventModel.addEvent(EventModel(
+                useremail: useremail,
                   Accepted: false,
                   eventName: EventTitle,
                   eventBudget:EventBudget,
