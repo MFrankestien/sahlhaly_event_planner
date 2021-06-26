@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sahlhaly_event_planner/models/event_model.dart';
+import 'package:sahlhaly_event_planner/utils/constants.dart';
+import 'package:sahlhaly_event_planner/utils/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
 
@@ -33,9 +35,9 @@ class _ViewreqState extends State<Viewreq> {
 
   @override
   Widget build(BuildContext context) {
-    String Email=widget.eventModel.Email;
+    String Email=widget.eventModel.useremail;
     String fullname=widget.eventModel.fname+widget.eventModel.lname;
-    String JobTitle = widget.eventModel.jobtitle;
+    String Nationalid = widget.eventModel.nationalid;
     String CompanyName = widget.eventModel.CompanyName;
 
     final topContentText = Column(
@@ -134,14 +136,14 @@ class _ViewreqState extends State<Viewreq> {
                   Expanded(
                     flex: 2,
                     child: Text(
-                      '📅 Date Of Birth:',
+                      '📅 Date:',
                       style: TextStyle(fontSize: 18.0),
                     ),
                   ),
                   Expanded(
                     flex: 2,
-                    child: (widget.eventModel.date!=null)?Text(
-                      myFormat.format(widget.eventModel.date),
+                    child: (widget.eventModel.deadline!=null)?Text(
+                    widget.eventModel.deadline,
                       style: TextStyle(fontSize: 18.0),
                     ):
                     Text('Complete your profile to show '),
@@ -152,14 +154,14 @@ class _ViewreqState extends State<Viewreq> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    '👨👩 Gender:',
+                    '👨👩 Audiance Number:',
                     style: TextStyle(fontSize: 18.0),
                   ),
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.eventModel.gender!=null)?Text(
-                    widget.eventModel.gender,
+                  child: (widget.eventModel.audNum!=null)?Text(
+                    widget.eventModel.audNum,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -170,14 +172,14 @@ class _ViewreqState extends State<Viewreq> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    ' 🙏 Religion:',
+                    ' 📍 Location:',
                     style: TextStyle(fontSize: 18.0),
                   ),
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.eventModel.religon!=null)?Text(
-                    widget.eventModel.religon,
+                  child: (widget.eventModel.location!=null)?Text(
+                    widget.eventModel.location,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -194,7 +196,7 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.eventModel.nationalid!=null)?Text(
+                  child: (widget.eventModel.!=null)?Text(
                     widget.eventModel.nationalid,
                     style: TextStyle(fontSize: 18.0),
                   ):

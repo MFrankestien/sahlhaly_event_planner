@@ -32,6 +32,7 @@ class _AddNeweventState extends State<AddNewevent> {
   final _formkeyNJ = GlobalKey<FormState>();
   final _eventModel = EventModel();
   String type='bm';
+  String fname,lname,natinalid,gender;
   String useremail='';
   final FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -46,6 +47,21 @@ class _AddNeweventState extends State<AddNewevent> {
 
       print("$useremail");
     }
+  Future getuserdata() async {
+    User userid = auth.currentUser;
+
+    var usertype=await _firestore.collection('Users').doc(userid.uid).get().then
+      ((DocumentSnapshot) async {
+
+      setState(() {
+        fname = DocumentSnapshot.data()['FirstName'];
+        lname = DocumentSnapshot.data()['LastName'];
+        natinalid= DocumentSnapshot.data()['NationalID'];
+        gender = DocumentSnapshot.data()['Gender'];
+      });
+
+      print("typeroute $type");
+    });}
   DateTime _date = DateTime.now();
 
   Future<Null> selectDate(BuildContext context) async {
