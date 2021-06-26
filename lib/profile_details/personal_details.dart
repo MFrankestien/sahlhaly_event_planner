@@ -118,8 +118,8 @@ class _PersonalDetailState extends State<PersonalDetail> {
                           Padding(
                             padding: EdgeInsets.only(left: 15.0),
                             child: FieldTitleWithIcon(
-                              title: "Date of Birth",
-                              icon: Icons.calendar_today,
+                              title: "$phone",
+                              icon: Icons.phone,
                             ),
                           ),
                           ProfileInputField(
@@ -134,8 +134,8 @@ class _PersonalDetailState extends State<PersonalDetail> {
                           Padding(
                             padding: EdgeInsets.only(left: 15.0),
                             child: FieldTitleWithIcon(
-                              title: "Religion",
-                              icon: Icons.featured_video,
+                              title: "$natinalid",
+                              icon: Icons.credit_card,
                             ),
                           ),
                           ProfileInputField(
@@ -144,6 +144,28 @@ class _PersonalDetailState extends State<PersonalDetail> {
                         ],
                       ),
                     ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(left: 15.0),
+                            child: FieldTitleWithIcon(
+                              title: "$gender",
+                              icon: Icons.transgender,
+                            ),
+                          ),
+                          ProfileInputField(
+                            initValue: widget.dob,
+                          ),
+                        ],
+                      ),
+                    ),
+
                   ],
                 ),
 
