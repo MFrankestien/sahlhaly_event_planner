@@ -137,20 +137,24 @@ bool show =true;
             for (var doc in snapshot.data.docs) {
               Map<String, dynamic> data = doc.data();
 
-             _events.add(EventModel(
-                 eventId: doc.id,
-                 image: data['image'],
-                 eventName:data['EventName'],
-                 audNum: data['AudinceNum'],
-               deadline: data['Deadline'],
-               eventAds: data['EventAds'],
-               eventBudget: data['eventBudget'],
-               eventCat: data['EventCat'],
-               eventEqu: data['EventEqu'],
-               eventIdea: data['EventIdea'],
-               eventTime: data['EventTime'],
-               location: data['Location'],
-             ));
+              _events.add(EventModel(
+                eventId: doc.id,
+                fname: data['FirstName'],
+                lname: data['LastName'],
+                nationalid: data['NationalID'],
+                gender: data['Gender'],
+                image: data['image'],
+                eventName:data['EventName'],
+                audNum: data['AudinceNum'],
+                deadline: data['Deadline'],
+                eventAds: data['EventAds'],
+                eventBudget: data['eventBudget'],
+                eventCat: data['EventCat'],
+                eventEqu: data['EventEqu'],
+                eventIdea: data['EventIdea'],
+                eventTime: data['EventTime'],
+                location: data['Location'],
+              ));
              print(_events);
             }
             return ListView.builder(

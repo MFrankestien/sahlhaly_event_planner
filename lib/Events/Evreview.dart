@@ -38,7 +38,7 @@ class _ViewreqState extends State<Viewreq> {
     String Email=widget.eventModel.useremail;
     String fullname=widget.eventModel.fname+widget.eventModel.lname;
     String Nationalid = widget.eventModel.nationalid;
-    String CompanyName = widget.eventModel.CompanyName;
+    String Gender = widget.eventModel.gender;
 
     final topContentText = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,6 +186,58 @@ class _ViewreqState extends State<Viewreq> {
                 ),
               ],),
               SizedBox(height: 10,),
+
+
+            ],
+          ),
+          Container(
+            width: SizeConfig.screenWidth,
+            child: new Divider(color: Colors.blueGrey),
+          ),
+          SizedBox(height: 20,),
+          /////////////////////////////////////Personal Information/////////////////////////////////////
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top:10.0),
+                child: Text(
+                    'Personal Information:',
+                    style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.w700)
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom:10.0),
+                child: Container(
+                  width: 250.0,
+                  child: new Divider(color: Theme.of(context).primaryColor),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: (widget.jobseeker.FullAdress!=null)?Text(
+                  widget.jobseeker.FullAdress,
+                  style: TextStyle(fontSize: 18.0),
+                ):
+                Text('Complete your profile to show '),
+              ),
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    '👨👩 Gender:',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: (widget.eventModel.gender!=null)?Text(
+                    widget.eventModel.gender,
+                    style: TextStyle(fontSize: 18.0),
+                  ):
+                  Text('Complete your profile to show '),
+                ),
+              ],),//gender
               Row(children: <Widget>[
                 Expanded(
                   flex: 2,
@@ -203,32 +255,6 @@ class _ViewreqState extends State<Viewreq> {
                   Text('Complete your profile to show '),
                 ),
               ],),
-
-            ],
-          ),
-          Container(
-            width: SizeConfig.screenWidth,
-            child: new Divider(color: Colors.blueGrey),
-          ),
-          SizedBox(height: 20,),
-          /////////////////////////////////////Contact Information/////////////////////////////////////
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top:10.0),
-                child: Text(
-                    'Contact Information:',
-                    style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.w700)
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom:10.0),
-                child: Container(
-                  width: 250.0,
-                  child: new Divider(color: Theme.of(context).primaryColor),
-                ),
-              ),
               Row(children: <Widget>[
                 Expanded(
                   flex: 2,
