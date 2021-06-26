@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Component/app_bar.dart';
+import 'package:sahlhaly_event_planner/Events/ViewRequested.dart';
 import 'package:sahlhaly_event_planner/Events/eventsOperations.dart';
 
 
@@ -108,7 +109,7 @@ bool show =true;
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => PasswordPage(jobsHot: job,show:show)));
+                builder: (context) => Viewreq(jobsHot: job,show:show)));
       },
     );
 
