@@ -82,6 +82,7 @@ class _AddNeweventState extends State<AddNewevent> {
   @override
   void initState() {
     getuseremail();
+    getuserdata();
   }
 
   @override
@@ -427,6 +428,9 @@ class _AddNeweventState extends State<AddNewevent> {
               print(EventEquieoment);
 
               _eventModel.addEvent(EventModel(
+                fname: fname,
+                lname: lname,
+                nationalid: natinalid,
                 useremail: useremail,
                   Accepted: false,
                   eventName: EventTitle,
