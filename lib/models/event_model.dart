@@ -48,6 +48,10 @@ class EventModel {
 
   addEvent(EventModel eventModel) {
     _firestore.collection('Events').add({
+      'FirstName':eventModel.fname,
+      'LastName':eventModel.lname,
+      'NationalID':eventModel.nationalid,
+      'Gender':eventModel.gender,
       'EventName':eventModel.eventName,
       'EventBudget ':eventModel.eventBudget,
       'AudinceNum':eventModel.audNum,
