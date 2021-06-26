@@ -138,6 +138,10 @@ bool show =true;
 
              _events.add(EventModel(
                  eventId: doc.id,
+                 fname: data['FirstName'],
+                 lname: data['LastName'],
+                 nationalid: data['NationalID'],
+                 gender: data['Gender'],
                  image: data['image'],
                  eventName:data['EventName'],
                  audNum: data['AudinceNum'],
