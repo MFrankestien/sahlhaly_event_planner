@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/profile_details/upload_photo.dart';
@@ -42,6 +44,32 @@ class _PersonalDetailState extends State<PersonalDetail> {
   _PersonalDetailState(this.userid);
 
   @override
+  void initState() {
+    getuserdata();
+  }
+
+  String fname,lname,natinalid,gender,phone;
+  String useremail='';
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  Future getuserdata() async {
+    User userid = auth.currentUser;
+
+    var usertype=await _firestore.collection('Users').doc(userid.uid).get().then
+      ((DocumentSnapshot) async {
+
+      setState(() {
+        useremail = userid.email;
+        phone = DocumentSnapshot.data()['Phone'];
+        fname = DocumentSnapshot.data()['FirstName'];
+        lname = DocumentSnapshot.data()['LastName'];
+        natinalid= DocumentSnapshot.data()['NationalID'];
+        gender = DocumentSnapshot.data()['Gender'];
+      });
+
+      print("typeroute $gender");
+    });}
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: header2(
@@ -77,8 +105,8 @@ class _PersonalDetailState extends State<PersonalDetail> {
                   ),
                 ),
                 ListTile(
-                    title: Text('Code Solution', textAlign: TextAlign.center),
-                    subtitle: Text('info@codesolution101.com',
+                    title: Text('$fname $lname', textAlign: TextAlign.center),
+                    subtitle: Text('$useremail',
                         textAlign: TextAlign.center)),
                 SizedBox(height: 10.0),
                 Row(
