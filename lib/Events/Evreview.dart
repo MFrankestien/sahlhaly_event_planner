@@ -56,7 +56,7 @@ class _ViewreqState extends State<Viewreq> {
                       width: 100.0,
                       height: 100.0,
                       image: (widget.eventModel.image!=null)?NetworkImage(widget.eventModel.image):NetworkImage(
-                        'https://i.stack.imgur.com/l60Hf.png',
+                        'https://static-s.aa-cdn.net/img/gp/20600003374622/CYx3IJANEy179hrkSj4qfCA7sw2XpO2cjuz3B6pStH74le6s2DzJFWnck_5s35HSouQ=w300?v=1',
                       ),
                     ),
                   ),
@@ -132,6 +132,60 @@ class _ViewreqState extends State<Viewreq> {
                 Expanded(
                   flex: 2,
                   child: Text(
+                    'Name:',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: (fullname!=null)?Text(
+                    fullname,
+                    style: TextStyle(fontSize: 18.0),
+                  ):
+                  Text('Complete your profile to show '),
+                ),
+              ],),
+              SizedBox(height: 15,),
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    '📧 E-mail:',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: (widget.eventModel.useremail!=null)?Text(
+                    widget.eventModel.useremail,
+                    style: TextStyle(fontSize: 18.0),
+                  ):
+                  Text('Complete your profile to show '),
+                ),
+              ],),
+              SizedBox(height: 10,),
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    ' ║▌ National ID:',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: (widget.eventModel.nationalid!=null)?Text(
+                    widget.eventModel.nationalid,
+                    style: TextStyle(fontSize: 18.0),
+                  ):
+                  Text('Complete your profile to show '),
+                ),
+              ],),
+              SizedBox(height: 10,),
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Text(
                     '👨👩 Gender:',
                     style: TextStyle(fontSize: 18.0),
                   ),
@@ -140,42 +194,6 @@ class _ViewreqState extends State<Viewreq> {
                   flex: 2,
                   child: (widget.eventModel.gender!=null)?Text(
                     widget.eventModel.gender,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    ' ║▌ National ID:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.nationalid!=null)?Text(
-                    widget.eventModel.nationalid,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    ' ║▌ National ID:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.nationalid!=null)?Text(
-                    widget.eventModel.nationalid,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -200,23 +218,7 @@ class _ViewreqState extends State<Viewreq> {
                 ),
               ],),
               SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    '📧 E-mail:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.useremail!=null)?Text(
-                    widget.eventModel.useremail,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
+
 
             ],
           ),
@@ -295,6 +297,7 @@ class _ViewreqState extends State<Viewreq> {
                   Text('Complete your profile to show '),
                 ),
               ],),
+              SizedBox(height: 10,),
               Row(children: <Widget>[
                 Expanded(
                   flex: 2,
@@ -330,6 +333,7 @@ class _ViewreqState extends State<Viewreq> {
                   Text('Complete your profile to show '),
                 ),
               ],),
+              SizedBox(height: 10,),
               Row(children: <Widget>[
                 Expanded(
                   flex: 2,
@@ -347,11 +351,12 @@ class _ViewreqState extends State<Viewreq> {
                   Text('Complete your profile to show '),
                 ),
               ],),
+              SizedBox(height: 10,),
               Row(children: <Widget>[
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'Event Ads:',
+                    'Budget:',
                     style: TextStyle(fontSize: 18.0),
                   ),
                 ),
@@ -364,6 +369,46 @@ class _ViewreqState extends State<Viewreq> {
                   Text('Complete your profile to show '),
                 ),
               ],),
+              SizedBox(height: 10,),
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    'Equiepment:',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: (widget.eventModel.eventEqu!=null)?Text(
+                    widget.eventModel.eventEqu,
+                    style: TextStyle(fontSize: 18.0),
+                  ):
+                  Text('Complete your profile to show '),
+                ),
+              ],),
+              SizedBox(height: 20,),
+              Row(
+                children: <Widget>[
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FlatButton(color: Colors.red, onPressed: (){
+
+                      CustomLaunch('mailto:$Email?subject=About Your Event Creation -  &body= Thank you very much $fullname for your interest in our services. \nThis message is to inform you that we rejted your event idea.\n \nWe appreciate your efforts for taking the time to apply for our service and wish you the best of luck in the future ideas .\n \n We have provided a list of feedback on how you can improve your ideas down below:\n\n 1-..........\n\n 2-..........\n\n 3-.......... \n\n Best regards');
+                    }, child: Text('Reject'),
+                    ),
+                  )),
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FlatButton(color: Colors.green, onPressed: (){
+
+                      CustomLaunch('mailto:$Email?subject=About Your Event Creation -  &body=Hello MR/Mrs $fullname \n \n We extend our gratitude and would like to inform you for  accepting your event idea .\n \n We are delighted and looking forward to commencing work with you.\n \n Best Regards');
+
+                    }, child: Text('Accept')),
+                  ))
+
+                ],
+              ),
 
             ],
           ),

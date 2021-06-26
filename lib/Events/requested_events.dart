@@ -150,7 +150,7 @@ bool show =true;
                 audNum: data['AudinceNum'],
                 deadline: data['Deadline'],
                 eventAds: data['EventAds'],
-                eventBudget: data['eventBudget'],
+                eventBudget: data['EventBudget '],
                 eventCat: data['EventCat'],
                 eventEqu: data['EventEqu'],
                 eventIdea: data['EventIdea'],

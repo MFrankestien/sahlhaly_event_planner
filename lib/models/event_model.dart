@@ -50,7 +50,7 @@ class EventModel {
 
   addEvent(EventModel eventModel) {
     _firestore.collection('Events').add({
-      'email':eventModel.useremail,
+      'Email':eventModel.useremail,
       'Phone':eventModel.phone,
       'FirstName':eventModel.fname,
       'LastName':eventModel.lname,

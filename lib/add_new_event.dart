@@ -61,7 +61,7 @@ class _AddNeweventState extends State<AddNewevent> {
         gender = DocumentSnapshot.data()['Gender'];
       });
 
-      print("typeroute $type");
+      print("typeroute $gender");
     });}
   DateTime _date = DateTime.now();
 
@@ -430,6 +430,7 @@ class _AddNeweventState extends State<AddNewevent> {
 
               _eventModel.addEvent(EventModel(
                 phone: phone,
+                gender: gender,
                 fname: fname,
                 lname: lname,
                 nationalid: natinalid,
