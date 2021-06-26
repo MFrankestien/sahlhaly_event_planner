@@ -99,7 +99,7 @@ bool show =true;
       trailing:Image(
         width: 60.0,
         height: 60.0,
-        image:NetworkImage(eventModel.image,)
+        image:NetworkImage('https://static-s.aa-cdn.net/img/gp/20600003374622/CYx3IJANEy179hrkSj4qfCA7sw2XpO2cjuz3B6pStH74le6s2DzJFWnck_5s35HSouQ=w300?v=1')
       ),
 
       onTap: () {
@@ -139,6 +139,8 @@ bool show =true;
 
               _events.add(EventModel(
                 eventId: doc.id,
+                useremail: data['Email'],
+                phone: data['Phone'],
                 fname: data['FirstName'],
                 lname: data['LastName'],
                 nationalid: data['NationalID'],

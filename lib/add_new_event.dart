@@ -447,7 +447,7 @@ class _AddNeweventState extends State<AddNewevent> {
                   eventIdea: EventIdea,
                   type: type));
               Fluttertoast.showToast(
-                  msg: "Job Added Succefully",
+                  msg: "Event Added Succefully",
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.BOTTOM,
                   timeInSecForIosWeb: 1,

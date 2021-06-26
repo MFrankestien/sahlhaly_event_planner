@@ -64,10 +64,7 @@ class _ViewreqState extends State<Viewreq> {
                     flex: 2,
                     child: Column(
                       children: <Widget>[
-                        Container(
-                          width: SizeConfig.screenWidth,
-                          child: new Divider(color: Colors.blueGrey),
-                        ),
+
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: (widget.eventModel.eventName!=null)?Text(
@@ -131,97 +128,6 @@ class _ViewreqState extends State<Viewreq> {
                   child: new Divider(color: Theme.of(context).primaryColor),
                 ),
               ),
-              Row(
-                children: <Widget>[
-
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      '📅 Date:',
-                      style: TextStyle(fontSize: 18.0),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: (widget.eventModel.deadline!=null)?Text(
-                    widget.eventModel.deadline,
-                      style: TextStyle(fontSize: 18.0),
-                    ):
-                    Text('Complete your profile to show '),
-                  ),
-                ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    '👨👩 Audiance Number:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.audNum!=null)?Text(
-                    widget.eventModel.audNum,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    ' 📍 Location:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.location!=null)?Text(
-                    widget.eventModel.location,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-
-
-            ],
-          ),
-          Container(
-            width: SizeConfig.screenWidth,
-            child: new Divider(color: Colors.blueGrey),
-          ),
-          SizedBox(height: 20,),
-          /////////////////////////////////////Personal Information/////////////////////////////////////
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top:10.0),
-                child: Text(
-                    'Personal Information:',
-                    style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.w700)
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom:10.0),
-                child: Container(
-                  width: 250.0,
-                  child: new Divider(color: Theme.of(context).primaryColor),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: (fullname!=null)?Text(
-                  fullname,
-                  style: TextStyle(fontSize: 18.0),
-                ):
-                Text('Complete your profile to show '),
-              ),
               Row(children: <Widget>[
                 Expanded(
                   flex: 2,
@@ -238,7 +144,8 @@ class _ViewreqState extends State<Viewreq> {
                   ):
                   Text('Complete your profile to show '),
                 ),
-              ],),//gender
+              ],),
+              SizedBox(height: 10,),
               Row(children: <Widget>[
                 Expanded(
                   flex: 2,
@@ -256,7 +163,24 @@ class _ViewreqState extends State<Viewreq> {
                   Text('Complete your profile to show '),
                 ),
               ],),
-
+              SizedBox(height: 10,),
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    ' ║▌ National ID:',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: (widget.eventModel.nationalid!=null)?Text(
+                    widget.eventModel.nationalid,
+                    style: TextStyle(fontSize: 18.0),
+                  ):
+                  Text('Complete your profile to show '),
+                ),
+              ],),
               SizedBox(height: 10,),
               Row(children: <Widget>[
                 Expanded(
@@ -293,12 +217,10 @@ class _ViewreqState extends State<Viewreq> {
                   Text('Complete your profile to show '),
                 ),
               ],),
+
             ],
           ),
-          Container(
-            width: SizeConfig.screenWidth,
-            child: new Divider(color: Colors.blueGrey),
-          ),
+
           SizedBox(height: 20,),
           ///////////////////////////////////// More info /////////////////////////////////////
           Column(
@@ -318,6 +240,61 @@ class _ViewreqState extends State<Viewreq> {
                   child: new Divider(color: Theme.of(context).primaryColor),
                 ),
               ),
+              Row(
+                children: <Widget>[
+
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      'Date:',
+                      style: TextStyle(fontSize: 18.0),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: (widget.eventModel.deadline!=null)?Text(
+                      widget.eventModel.deadline,
+                      style: TextStyle(fontSize: 18.0),
+                    ):
+                    Text('Complete your profile to show '),
+                  ),
+                ],),
+              SizedBox(height: 10,),
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    ' Audiance Num:',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: (widget.eventModel.audNum!=null)?Text(
+                    widget.eventModel.audNum,
+                    style: TextStyle(fontSize: 18.0),
+                  ):
+                  Text('Complete your profile to show '),
+                ),
+              ],),
+              SizedBox(height: 10,),
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    '  Location:',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: (widget.eventModel.location!=null)?Text(
+                    widget.eventModel.location,
+                    style: TextStyle(fontSize: 18.0),
+                  ):
+                  Text('Complete your profile to show '),
+                ),
+              ],),
               Row(children: <Widget>[
                 Expanded(
                   flex: 2,
