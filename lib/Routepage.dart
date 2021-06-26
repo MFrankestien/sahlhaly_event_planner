@@ -7,6 +7,7 @@ import 'package:sahlhaly_event_planner/Component/draweradmin.dart';
 import 'package:sahlhaly_event_planner/Events/hot_events.dart';
 import 'package:sahlhaly_event_planner/Events/requested_events.dart';
 import 'package:sahlhaly_event_planner/HomePage.dart';
+import 'package:sahlhaly_event_planner/org_new_event.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Component/bottom_nav_bar.dart';
 import 'Component/drawer.dart';
@@ -95,7 +96,7 @@ class _RoutePageState extends State<RoutePage> {
           onPageChanged: onPageChanged,
           children: [
             HomePage(),
-            Upcommingevents(),
+            Requevents()
 
           ],
         ),);
