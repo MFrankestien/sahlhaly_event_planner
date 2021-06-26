@@ -14,9 +14,11 @@ class EventModel {
       eventEqu,
       eventIdea,
       type;
+  bool Accepted;
 
   //Contructor
   EventModel({
+    this.Accepted,
     this.eventId,
     this.image,
     this.eventName,
@@ -47,6 +49,7 @@ class EventModel {
       'EventEqu': eventModel.eventEqu,
       'EventIdea': eventModel.eventIdea,
       'Type': eventModel.type,
+      'accepted':eventModel.Accepted
     });
   }
 

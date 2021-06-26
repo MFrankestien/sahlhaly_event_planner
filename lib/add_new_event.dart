@@ -397,6 +397,7 @@ class _AddNeweventState extends State<AddNewevent> {
               print(EventEquieoment);
 
               _eventModel.addEvent(EventModel(
+                  Accepted: false,
                   eventName: EventTitle,
                   eventBudget:EventBudget,
                   audNum: AudinceNumber,
