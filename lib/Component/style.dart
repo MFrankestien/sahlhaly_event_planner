@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sahlhaly_event_planner/utils/constants.dart';
 Color facebookColor = Color(0xFF416BC1);
 Color googleColor = Color(0xFFCF4333);
@@ -71,7 +73,45 @@ final kH2WTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 20.0,
 );
+AppBar Review(context, {String titleText,String docid} ) {
 
+  Widget customSearchBar = Text(
+    titleText,
+    style: TextStyle(
+      fontSize: 25.0,
+      color: Colors.white,
+    ),
+  );
+  return AppBar(
+    automaticallyImplyLeading: false,
+    title: customSearchBar,
+    actions: <Widget>[
+      Hero(
+        tag: 'profileImage',
+        child: Padding(
+          padding: const EdgeInsets.only(left:10.0,right: 10.0),
+        ),
+      ),
+      IconButton(
+        onPressed: () {
+          Fluttertoast.showToast(
+              msg: "The Cv Deleted Successfully",
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 10,
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
+              fontSize: 20.0
+          );
+
+        },
+        icon: Icon(FontAwesomeIcons.trashAlt),
+      ),
+
+    ],
+    elevation: 3,
+  );
+}
 AppBar header2(context, {bool isAppTitle=false, String titleText,  actions}) {
   return AppBar(
     leading: BackButtonPop2(),

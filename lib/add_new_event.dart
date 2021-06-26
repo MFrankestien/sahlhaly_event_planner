@@ -32,7 +32,7 @@ class _AddNeweventState extends State<AddNewevent> {
   final _formkeyNJ = GlobalKey<FormState>();
   final _eventModel = EventModel();
   String type='bm';
-  String fname,lname,natinalid,gender;
+  String fname,lname,natinalid,gender,phone;
   String useremail='';
   final FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -54,6 +54,7 @@ class _AddNeweventState extends State<AddNewevent> {
       ((DocumentSnapshot) async {
 
       setState(() {
+        phone = DocumentSnapshot.data()['Phone'];
         fname = DocumentSnapshot.data()['FirstName'];
         lname = DocumentSnapshot.data()['LastName'];
         natinalid= DocumentSnapshot.data()['NationalID'];
@@ -428,6 +429,7 @@ class _AddNeweventState extends State<AddNewevent> {
               print(EventEquieoment);
 
               _eventModel.addEvent(EventModel(
+                phone: phone,
                 fname: fname,
                 lname: lname,
                 nationalid: natinalid,

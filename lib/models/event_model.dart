@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EventModel {
   String eventId,
+  phone,
       gender,
       fname,
       lname,
@@ -23,6 +24,7 @@ class EventModel {
 
   //Contructor
   EventModel({
+    this.phone,
     this.fname,
     this.lname,
     this.nationalid,
@@ -48,6 +50,7 @@ class EventModel {
 
   addEvent(EventModel eventModel) {
     _firestore.collection('Events').add({
+      'Phone':eventModel.phone,
       'FirstName':eventModel.fname,
       'LastName':eventModel.lname,
       'NationalID':eventModel.nationalid,

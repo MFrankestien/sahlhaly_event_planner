@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:sahlhaly_event_planner/Component/style.dart';
 import 'package:sahlhaly_event_planner/models/event_model.dart';
 import 'package:sahlhaly_event_planner/utils/constants.dart';
 import 'package:sahlhaly_event_planner/utils/size_config.dart';
@@ -54,7 +55,7 @@ class _ViewreqState extends State<Viewreq> {
                     child: Image(
                       width: 100.0,
                       height: 100.0,
-                      image: (widget.eventModel.imageurl!=null)?NetworkImage(widget.eventModel.imageurl):NetworkImage(
+                      image: (widget.eventModel.image!=null)?NetworkImage(widget.eventModel.image):NetworkImage(
                         'https://i.stack.imgur.com/l60Hf.png',
                       ),
                     ),
@@ -69,8 +70,8 @@ class _ViewreqState extends State<Viewreq> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: (widget.eventModel.name!=null)?Text(
-                            widget.eventModel.name,
+                          child: (widget.eventModel.eventName!=null)?Text(
+                            widget.eventModel.eventName,
                             style: TextStyle(
                                 fontSize: 20.0, color: Colors.white),
                           ):  SizedBox(
@@ -215,8 +216,8 @@ class _ViewreqState extends State<Viewreq> {
               ),
               Expanded(
                 flex: 2,
-                child: (widget.jobseeker.FullAdress!=null)?Text(
-                  widget.jobseeker.FullAdress,
+                child: (fullname!=null)?Text(
+                  fullname,
                   style: TextStyle(fontSize: 18.0),
                 ):
                 Text('Complete your profile to show '),
@@ -248,48 +249,14 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.eventModel.!=null)?Text(
+                  child: (widget.eventModel.nationalid!=null)?Text(
                     widget.eventModel.nationalid,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
                 ),
               ],),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    '📍 City:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.City!=null)?Text(
-                    widget.eventModel.City,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    '🏢 Address:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.FullAdress!=null)?Text(
-                    widget.eventModel.FullAdress,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
+
               SizedBox(height: 10,),
               Row(children: <Widget>[
                 Expanded(
@@ -301,8 +268,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.eventModel.Phone!=null)?Text(
-                    widget.eventModel.Phone,
+                  child: (widget.eventModel.phone!=null)?Text(
+                    widget.eventModel.phone,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -319,8 +286,8 @@ class _ViewreqState extends State<Viewreq> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.eventModel.Email!=null)?Text(
-                    widget.eventModel.Email,
+                  child: (widget.eventModel.useremail!=null)?Text(
+                    widget.eventModel.useremail,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
@@ -333,14 +300,14 @@ class _ViewreqState extends State<Viewreq> {
             child: new Divider(color: Colors.blueGrey),
           ),
           SizedBox(height: 20,),
-          /////////////////////////////////////Career Application/////////////////////////////////////
+          ///////////////////////////////////// More info /////////////////////////////////////
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(top:10.0),
                 child: Text(
-                  'Career Information:',
+                  'More information about event:',
                   style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.w700),
                 ),
               ),
@@ -355,464 +322,75 @@ class _ViewreqState extends State<Viewreq> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'My Objective:',
+                    'Event idea:',
                     style: TextStyle(fontSize: 18.0),
                   ),
                 ),
                 Expanded(
                   flex: 2,
-                  child: (widget.eventModel.Objective!=null)?Text(
-                    widget.eventModel.Objective,
+                  child: (widget.eventModel.eventIdea!=null)?Text(
+                    widget.eventModel.eventIdea,
                     style: TextStyle(fontSize: 18.0),
                   ):
                   Text('Complete your profile to show '),
                 ),
               ],),
               SizedBox(height: 10,),
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    'Event Time:',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: (widget.eventModel.eventTime!=null)?Text(
+                    widget.eventModel.eventTime,
+                    style: TextStyle(fontSize: 18.0),
+                  ):
+                  Text('Complete your profile to show '),
+                ),
+              ],),
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    'Event Ads:',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: (widget.eventModel.eventAds!=null)?Text(
+                    widget.eventModel.eventAds,
+                    style: TextStyle(fontSize: 18.0),
+                  ):
+                  Text('Complete your profile to show '),
+                ),
+              ],),
+              Row(children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    'Event Ads:',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: (widget.eventModel.eventBudget!=null)?Text(
+                    widget.eventModel.eventBudget,
+                    style: TextStyle(fontSize: 18.0),
+                  ):
+                  Text('Complete your profile to show '),
+                ),
+              ],),
 
             ],
           ),
-          Container(
-            width: SizeConfig.screenWidth,
-            child: new Divider(color: Colors.blueGrey),
-          ),
-          SizedBox(height: 20,),
 
-          /////////////////////////////////////Education/////////////////////////////////////
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top:10.0),
-                child: Text(
-                  'Academic Qualifications :',
-                  style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.w700),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom:10.0),
-                child: Container(
-                  width: 250.0,
-                  child: new Divider(color: Theme.of(context).primaryColor),
-                ),
-              ),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Institute Name:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.InstituteName!=null)?Text(
-                    widget.eventModel.InstituteName,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Academic Level:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.EducationLvl!=null)?Text(
-                    widget.eventModel.EducationLvl,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Result:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.Result!=null)?Text(
-                    widget.eventModel.Result,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Passing Year:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.PassingYear!=null)?Text(
-                    widget.eventModel.PassingYear,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-            ],
-          ),
-          Container(
-            width: SizeConfig.screenWidth,
-            child: new Divider(color: Colors.blueGrey),
-          ),
-          SizedBox(height: 20,),
-          /////////////////////////////////////Employment History/////////////////////////////////////
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top:10.0),
-                child: Text(
-                  'Employment History :',
-                  style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.w700),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom:10.0),
-                child: Container(
-                  width: 250.0,
-                  child: new Divider(color: Theme.of(context).primaryColor),
-                ),
-              ),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Company Name:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.CompanyName!=null)?Text(
-                    widget.eventModel.CompanyName,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Department:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.Department!=null)?Text(
-                    widget.eventModel.Department,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      'Responsibilities:',
-                      style: TextStyle(fontSize: 18.0),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: (widget.eventModel.Responsabilities!=null)?Text(
-                      widget.eventModel.Responsabilities,
-                      style: TextStyle(fontSize: 18.0),
-                    ):
-                    Text('Complete your profile to show '),
-                  ),
-                ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Start Year:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.StartingYear!=null)?Text(
-                    widget.eventModel.StartingYear,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'End Year:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.EndYear!=null)?Text(
-                    widget.eventModel.EndYear,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,)
-            ],
-          ),
-          Container(
-            width: SizeConfig.screenWidth,
-            child: new Divider(color: Colors.blueGrey),
-          ),
-          SizedBox(height: 20,),
-          /////////////////////////////////////Language Proficiency//////////////////////////////////
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top:10.0),
-                child: Text(
-                  'Language Proficiency :',
-                  style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.w700),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom:10.0),
-                child: Container(
-                  width: 250.0,
-                  child: new Divider(color: Theme.of(context).primaryColor),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top:10.0),
-                child: Text(
-                  'First Language',
-                  style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.w400),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom:10.0),
-                child: Container(
-                  width: 170.0,
-                  child: new Divider(color: Theme.of(context).primaryColor),
-                ),
-              ),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'First Language:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.FirstLangauge!=null)?Text(
-                    widget.eventModel.FirstLangauge,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Reading Level:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.FirstLangReadingLvl!=null)?Text(
-                    widget.eventModel.FirstLangReadingLvl,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Writing Level:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.FirstLanguageWritingLvl!=null)?Text(
-                    widget.eventModel.FirstLanguageWritingLvl,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Speaking Level:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.FirstLanguageSpeakingLvl!=null)?Text(
-                    widget.eventModel.FirstLanguageSpeakingLvl,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 20,),
-              Padding(
-                padding: EdgeInsets.only(top:10.0),
-                child: Text(
-                  'Second Language',
-                  style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.w400),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom:10.0),
-                child: Container(
-                  width: 170.0,
-                  child: new Divider(color: Theme.of(context).primaryColor),
-                ),
-              ),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Second Language:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.SecondLangauge!=null)?Text(
-                    widget.eventModel.SecondLangauge,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Reading Level:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.SecondLangReadingLvl!=null)?Text(
-                    widget.eventModel.SecondLangReadingLvl,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Writing Level:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.SecondLanguageWritingLvl!=null)?Text(
-                    widget.eventModel.SecondLanguageWritingLvl,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-              SizedBox(height: 10,),
-              Row(children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Speaking Level:',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: (widget.eventModel.SecondLanguageSpeakingLvl!=null)?Text(
-                    widget.eventModel.SecondLanguageSpeakingLvl,
-                    style: TextStyle(fontSize: 18.0),
-                  ):
-                  Text('Complete your profile to show '),
-                ),
-              ],),
-            ],
-          ),
-          Container(
-            width: SizeConfig.screenWidth,
-            child: new Divider(color: Colors.blueGrey),
-          ),
-          SizedBox(height: 20,),
-          Row(
-            children: <Widget>[
-            Expanded(child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: FlatButton(color: Colors.red, onPressed: (){
-                Firestore.instance
-                    .collection('Applicants')
-                    .document(widget.eventModel.docId).updateData({'Accepted':false});
-                CustomLaunch('mailto:$Email?subject=$JobTitle - $CompanyName  &body= Thank you very much $fullname for your interest in employment opportunities with $CompanyName company.\n \nThis message is to inform you that we have selected a candidate who is a match for the job requirements of the position.\n \nWe appreciate you taking the time to apply for employment with our company and wish you the best of luck in your future endeavors.\n \n We have a place for you with us still!!\n\n We have provided a list of feedback on how you can improve yourself down below:\n\n 1-..........\n\n 2-..........\n\n 3-.......... \n\n We wish that you will reach out for us in the future as well after considering our feedback \n\n Best regards,$CompanyName');
-              }, child: Text('Reject'),
-               ),
-            )),
-              Expanded(child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FlatButton(color: Colors.green, onPressed: (){
-
-                  Firestore.instance
-                      .collection('Applicants')
-                      .document(widget.eventModel.docId).updateData({'Accepted':true});
-                  CustomLaunch('mailto:$Email?subject=$JobTitle - $CompanyName &body= Hello MR/Mrs $fullname \n \n We extend our gratitude and would like to inform you for being accepted for the position of $JobTitle in $CompanyName.\n \n We are delighted and looking forward to commencing work with you.\n \n Best Regards, $CompanyName');
-
-                }, child: Text('Accept')),
-              ))
-
-            ],
-          ),
 
         ],
       ),
@@ -820,7 +398,7 @@ class _ViewreqState extends State<Viewreq> {
     return WillPopScope(
       onWillPop: () => Future.value(true),
       child: Scaffold(
-        appBar: CReview(context, titleText: 'C.V Review',docid: widget.eventModel.docId),
+        appBar: Review(context, titleText: 'C.V Review',docid: widget.eventModel.eventId),
         body: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
           child: Column(
