@@ -1,4 +1,6 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/payment.dart';
 import 'package:sahlhaly_event_planner/profile_details/personal_details.dart';
@@ -6,8 +8,34 @@ import 'package:sahlhaly_event_planner/services/auth.dart';
 import 'package:sahlhaly_event_planner/wrapper.dart';
 
 
-class MainDrawer extends StatelessWidget {
-  const MainDrawer({Key key}) : super(key: key);
+class MainDrawer extends StatefulWidget {
+  @override
+  _MainDrawerState createState() => _MainDrawerState();
+}
+
+class _MainDrawerState extends State<MainDrawer> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  String name='';
+  String lname='';
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  Future getusername() async {
+    User userid = auth.currentUser;
+
+    var usertype=await _firestore.collection('Users').doc(userid.uid).get().then
+      ((DocumentSnapshot) async {
+
+      setState(() {
+        name = DocumentSnapshot.data()['FirstName'];
+        lname = DocumentSnapshot.data()['LastName'];
+      });
+
+      print(name);
+    });}
+
+  @override
+  void initState() {
+    getusername();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +49,14 @@ class MainDrawer extends StatelessWidget {
             children: [
 
               CircleAvatar(
-                radius: 50.0,
-                backgroundImage: NetworkImage("https://i.stack.imgur.com/l60Hf.png")
+                  radius: 50.0,
+                  backgroundImage: NetworkImage("https://i.stack.imgur.com/l60Hf.png")
               ),
               SizedBox(
                 height: 5.0,
               ),
               Text(
-                "name",
+                "$name $lname",
                 style: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.w800,
