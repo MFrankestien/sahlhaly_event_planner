@@ -6,6 +6,7 @@ import 'package:sahlhaly_event_planner/Component/app_bar.dart';
 import 'package:sahlhaly_event_planner/Component/draweradmin.dart';
 import 'package:sahlhaly_event_planner/Events/hot_events.dart';
 import 'Events/Requsted_event/requested_events.dart';
+import 'Screens/AdminHomePage.dart';
 import 'Screens/HomePage.dart';
 import 'package:sahlhaly_event_planner/org_new_event.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -133,7 +134,7 @@ class _RoutePageState extends State<RoutePage> {
           physics: NeverScrollableScrollPhysics(),
           onPageChanged: onPageChanged,
           children: [
-            HomePage(),
+            AdHomePage(),
             Oldevents()
 
           ],

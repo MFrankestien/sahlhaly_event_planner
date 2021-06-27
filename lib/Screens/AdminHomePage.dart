@@ -8,12 +8,12 @@ import 'add_new_event.dart';
 import 'package:sahlhaly_event_planner/org_new_event.dart';
 
 
-class HomePage extends StatefulWidget {
+class AdHomePage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _AdHomePageState createState() => _AdHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AdHomePageState extends State<AdHomePage> {
   bool _isExpanded = true;
   PageController pageController;
   int pageIndex = 0;
@@ -158,11 +158,152 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     SizedBox(height: 30.0),
+                    GestureDetector(
 
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => orgevent()),
+                        );
+
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        elevation: 5,
+                        color: Colors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 20.0),
+                          child: Row(
+                            children: <Widget>[
+                              RawMaterialButton(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10.0),
+                                        topRight: Radius.zero,
+                                        bottomLeft: Radius.zero,
+                                        bottomRight:
+                                        Radius.circular(50.0)),
+                                  ),
+                                  onPressed: () {},
+                                  fillColor:
+                                  Theme.of(context).accentColor,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 10,
+                                        left: 10,
+                                        right: 20,
+                                        bottom: 20),
+                                    child: Icon(
+                                      FontAwesomeIcons.building,
+                                      size: 40.0,
+                                      color: Colors.white,
+                                    ),
+                                  )),
+                              Expanded(
+                                child: Column(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 20.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Text(
+                                            "Organization Events",
+                                            style: TextStyle(
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                                fontSize: 23.0),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
               SizedBox(height: 10),
+              GestureDetector(
+
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => orgevent()),
+                  );
+
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  elevation: 5,
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: Row(
+                      children: <Widget>[
+                        RawMaterialButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10.0),
+                                  topRight: Radius.zero,
+                                  bottomLeft: Radius.zero,
+                                  bottomRight:
+                                  Radius.circular(50.0)),
+                            ),
+                            onPressed: () {},
+                            fillColor:
+                            Theme.of(context).accentColor,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 10,
+                                  left: 10,
+                                  right: 20,
+                                  bottom: 20),
+                              child: Icon(
+                                FontAwesomeIcons.building,
+                                size: 40.0,
+                                color: Colors.white,
+                              ),
+                            )),
+                        Expanded(
+                          child: Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20.0),
+                                child: Column(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Text(
+                                      "Organization Events",
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .accentColor,
+                                          fontSize: 23.0),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
 
             ],
           ),
