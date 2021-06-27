@@ -90,7 +90,7 @@ class _AnimationScreenState extends State<AnimationScreen> with SingleTickerProv
           )
         ),
         Padding(
-          padding: EdgeInsets.only(bottom: 80),
+          padding: EdgeInsets.only(bottom: 150),
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Opacity(

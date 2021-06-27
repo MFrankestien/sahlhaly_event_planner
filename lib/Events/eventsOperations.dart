@@ -24,6 +24,10 @@ class Eoboperation {
     return _firestore.collection('Events').snapshots();
   }
 
+  Stream<QuerySnapshot> loadoldevents() {
+    return _firestore.collection('OldEvents').snapshots();
+  }
+
 
 
   deleteevent(documentId){

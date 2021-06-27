@@ -420,7 +420,7 @@ class _ViewreqState extends State<Viewreq> {
     return WillPopScope(
       onWillPop: () => Future.value(true),
       child: Scaffold(
-        appBar: Review(context, titleText: 'C.V Review',docid: widget.eventModel.eventId),
+        appBar: Review(context, titleText: 'Event',docid: widget.eventModel.eventId),
         body: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
           child: Column(

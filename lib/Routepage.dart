@@ -11,6 +11,7 @@ import 'package:sahlhaly_event_planner/org_new_event.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Component/bottom_nav_bar.dart';
 import 'Component/drawer.dart';
+import 'Events/oldEvents/old_events.dart';
 class RoutePage extends StatefulWidget {
   @override
   _RoutePageState createState() => _RoutePageState();
@@ -83,8 +84,8 @@ class _RoutePageState extends State<RoutePage> {
             activeColor: Colors.red,
           ),
           BottomNavBarItem(
-              icon: Icon(Icons.whatshot),
-              title: Text('Hot Events'),
+              icon: Icon(Icons.access_time),
+              title: Text('Recent Events'),
               activeColor: Colors.teal),
 
         ],
@@ -97,7 +98,7 @@ class _RoutePageState extends State<RoutePage> {
           onPageChanged: onPageChanged,
           children: [
             HomePage(),
-            Requevents()
+            Oldevents()
 
           ],
         ),);
@@ -119,8 +120,8 @@ class _RoutePageState extends State<RoutePage> {
             activeColor: Colors.red,
           ),
           BottomNavBarItem(
-              icon: Icon(Icons.whatshot),
-              title: Text('Hot Events'),
+              icon: Icon(Icons.access_time),
+              title: Text('Recent Events'),
               activeColor: Colors.teal),
 
         ],
@@ -133,7 +134,7 @@ class _RoutePageState extends State<RoutePage> {
           onPageChanged: onPageChanged,
           children: [
             HomePage(),
-            Requevents()
+            Oldevents()
 
           ],
         ),);

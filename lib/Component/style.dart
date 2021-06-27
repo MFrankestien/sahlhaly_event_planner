@@ -92,21 +92,7 @@ AppBar Review(context, {String titleText,String docid} ) {
           padding: const EdgeInsets.only(left:10.0,right: 10.0),
         ),
       ),
-      IconButton(
-        onPressed: () {
-          Fluttertoast.showToast(
-              msg: "The Cv Deleted Successfully",
-              toastLength: Toast.LENGTH_LONG,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIosWeb: 10,
-              backgroundColor: Colors.red,
-              textColor: Colors.white,
-              fontSize: 20.0
-          );
 
-        },
-        icon: Icon(FontAwesomeIcons.trashAlt),
-      ),
 
     ],
     elevation: 3,
