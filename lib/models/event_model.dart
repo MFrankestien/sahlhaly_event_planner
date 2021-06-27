@@ -49,7 +49,7 @@ class EventModel {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   addEvent(EventModel eventModel) {
-    _firestore.collection('UpEvents').add({
+    _firestore.collection('Events').add({
       'Email':eventModel.useremail,
       'Phone':eventModel.phone,
       'FirstName':eventModel.fname,
