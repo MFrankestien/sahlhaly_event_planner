@@ -293,7 +293,7 @@ class _PasswordPageState extends State<PasswordPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
-            'login Information',
+            'Sign-UP Information',
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,

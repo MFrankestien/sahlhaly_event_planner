@@ -27,8 +27,11 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: IgnorePointer(
-            child: AnimationScreen(
-                color: Theme.of(context).accentColor
+            child: Material(
+              type: MaterialType.transparency,
+              child: AnimationScreen(
+                  color: Theme.of(context).accentColor
+              ),
             )
         )
       ),

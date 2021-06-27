@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sahlhaly_event_planner/Component/style.dart';
 import 'package:sahlhaly_event_planner/LoginScreen.dart';
 import 'package:sahlhaly_event_planner/wrapper.dart';
 import 'hole_painter.dart';
@@ -90,16 +91,14 @@ class _AnimationScreenState extends State<AnimationScreen> with SingleTickerProv
           )
         ),
         Padding(
-          padding: EdgeInsets.only(bottom: 150),
+          padding: EdgeInsets.only(bottom: 310),
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Opacity(
               opacity: _animation.textOpacity.value,
               child: Text(
                 'Sahlhaly',
-                style: TextStyle(
-                    color: Colors.white, fontSize: 32
-                ),
+                style: mainTitleStyle,
               )
             )
           )
