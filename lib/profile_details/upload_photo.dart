@@ -21,7 +21,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
     var image = await ImagePicker().getImage(source: ImageSource.gallery) ;
 
     setState(() {
-      _image = image as File ;
+      _image = File(image.path) ;
     });
     String fileName = basename(_image.path);
     Reference firebaseStorageRef = FirebaseStorage.instance.ref().child(fileName);
@@ -34,8 +34,9 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
       User user = auth.currentUser;
       FirebaseFirestore.instance.collection('Users').doc(user.uid).update({"image":downlaodUrl});
       SharedPreferences preferences=await SharedPreferences.getInstance();
-      preferences.setString('Url', downlaodUrl);
-      print(user.uid);
+      preferences.setString('Url', urls);
+      print(urls);
+      print(_image);
 
     }
 
