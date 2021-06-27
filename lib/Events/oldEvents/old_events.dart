@@ -44,7 +44,7 @@ bool show =true;
               Column(
                 children: <Widget>[
                   Text(
-                    '📅 Deadline:',
+                    '📅 Date:',
                     style: TextStyle(
                         fontSize: 15.0, fontWeight: FontWeight.w700),
                   ),
