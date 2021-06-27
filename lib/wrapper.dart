@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sahlhaly_event_planner/LoginScreen.dart';
+import 'Screens/LoginScreen.dart';
 import 'package:sahlhaly_event_planner/Routepage.dart';
 
 import 'models/user.dart';

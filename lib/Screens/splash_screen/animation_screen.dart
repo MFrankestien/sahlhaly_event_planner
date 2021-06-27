@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Component/style.dart';
-import 'package:sahlhaly_event_planner/LoginScreen.dart';
 import 'package:sahlhaly_event_planner/wrapper.dart';
 import 'hole_painter.dart';
 import 'staggered_raindrop_animation.dart';

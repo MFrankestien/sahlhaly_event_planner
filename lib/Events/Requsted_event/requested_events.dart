@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sahlhaly_event_planner/Events/Evreview.dart';
+import 'Evreview.dart';
 import 'package:sahlhaly_event_planner/Events/eventsOperations.dart';
 
 
@@ -43,7 +43,7 @@ bool show =true;
               Column(
                 children: <Widget>[
                   Text(
-                    '📅 Deadline:',
+                    '📅 Date:',
                     style: TextStyle(
                         fontSize: 15.0, fontWeight: FontWeight.w700),
                   ),

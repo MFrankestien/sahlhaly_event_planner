@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Register/Login_info_page.dart';
 import 'package:sahlhaly_event_planner/Routepage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Register/reset_password.dart';
-import 'Component/style.dart';
+import '../Register/reset_password.dart';
+import '../Component/style.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

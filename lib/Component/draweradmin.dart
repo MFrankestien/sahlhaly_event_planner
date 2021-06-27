@@ -2,8 +2,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sahlhaly_event_planner/Events/requested_events.dart';
-import 'package:sahlhaly_event_planner/payment.dart';
+import '../Events/Requsted_event/requested_events.dart';
+import '../Screens/payment.dart';
 import 'package:sahlhaly_event_planner/profile_details/personal_details.dart';
 import 'package:sahlhaly_event_planner/services/auth.dart';
 import 'package:sahlhaly_event_planner/wrapper.dart';

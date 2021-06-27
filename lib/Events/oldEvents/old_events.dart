@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sahlhaly_event_planner/Events/Evreview.dart';
+import '../Requsted_event/Evreview.dart';
 import 'package:sahlhaly_event_planner/Events/eventsOperations.dart';
 import 'package:sahlhaly_event_planner/Events/oldEvents/oldreview.dart';
 

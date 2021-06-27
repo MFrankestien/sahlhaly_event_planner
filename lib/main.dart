@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sahlhaly_event_planner/models/user.dart';
 import 'package:sahlhaly_event_planner/services/auth.dart';
-import 'package:sahlhaly_event_planner/splash_screen/animation_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'Screens/splash_screen/animation_screen.dart';
 
 
 Future<void> main() async {
