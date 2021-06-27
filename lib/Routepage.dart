@@ -4,11 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sahlhaly_event_planner/Component/app_bar.dart';
 import 'package:sahlhaly_event_planner/Component/draweradmin.dart';
-import 'package:sahlhaly_event_planner/Events/hot_events.dart';
-import 'Events/Requsted_event/requested_events.dart';
+import 'package:sahlhaly_event_planner/Events/UpEvents/Up_events.dart';
 import 'Screens/AdminHomePage.dart';
 import 'Screens/HomePage.dart';
-import 'package:sahlhaly_event_planner/org_new_event.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Component/bottom_nav_bar.dart';
 import 'Component/drawer.dart';
@@ -88,6 +86,10 @@ class _RoutePageState extends State<RoutePage> {
               icon: Icon(Icons.access_time),
               title: Text('Recent Events'),
               activeColor: Colors.teal),
+          BottomNavBarItem(
+              icon: Icon(Icons.whatshot),
+              title: Text('Up comming'),
+              activeColor: Colors.teal),
 
         ],
       ),
@@ -99,7 +101,8 @@ class _RoutePageState extends State<RoutePage> {
           onPageChanged: onPageChanged,
           children: [
             HomePage(),
-            Oldevents()
+            Oldevents(),
+            Upevents(),
 
           ],
         ),);
@@ -124,6 +127,10 @@ class _RoutePageState extends State<RoutePage> {
               icon: Icon(Icons.access_time),
               title: Text('Recent Events'),
               activeColor: Colors.teal),
+          BottomNavBarItem(
+              icon: Icon(Icons.whatshot),
+              title: Text('Up comming'),
+              activeColor: Colors.teal),
 
         ],
       ),
@@ -135,7 +142,8 @@ class _RoutePageState extends State<RoutePage> {
           onPageChanged: onPageChanged,
           children: [
             AdHomePage(),
-            Oldevents()
+            Oldevents(),
+            Upevents(),
 
           ],
         ),);

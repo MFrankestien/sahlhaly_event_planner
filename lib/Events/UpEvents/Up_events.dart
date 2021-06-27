@@ -1,19 +1,18 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sahlhaly_event_planner/Component/app_bar.dart';
+import '../Requsted_event/Evreview.dart';
 import 'package:sahlhaly_event_planner/Events/eventsOperations.dart';
+import 'package:sahlhaly_event_planner/Events/oldEvents/oldreview.dart';
 
 
 import 'package:sahlhaly_event_planner/models/event_model.dart';
 
-class Upcommingevents extends StatefulWidget {
+class Upevents extends StatefulWidget {
   @override
-  _UpcommingeventsState createState() => _UpcommingeventsState();
+  _UpeventsState createState() => _UpeventsState();
 }
 
-class _UpcommingeventsState extends State<Upcommingevents> {
+class _UpeventsState extends State<Upevents> {
   final event = Eoboperation();
 List jobs;
 bool show =true;
@@ -37,7 +36,7 @@ bool show =true;
         children: <Widget>[
 
           SizedBox(
-            height: 50.0,
+            height: 20.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +44,7 @@ bool show =true;
               Column(
                 children: <Widget>[
                   Text(
-                    '📅 Deadline:',
+                    '📅 Date:',
                     style: TextStyle(
                         fontSize: 15.0, fontWeight: FontWeight.w700),
                   ),
@@ -80,32 +79,40 @@ bool show =true;
                   ),
                 ],
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    '📋 Event Type:',
-                    style: TextStyle(
-                        fontSize: 15.0, fontWeight: FontWeight.w700),
-                  ),
-                  Text(
-                    eventModel.eventCat,
-                    style: TextStyle(fontSize: 15.0),
-                  ),
-                ],
-              ),
+
             ],
           ),
+          Row(children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  '📋 Event Type:',
+                  style: TextStyle(
+                      fontSize: 15.0, fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  eventModel.eventCat,
+                  style: TextStyle(fontSize: 15.0),
+                ),
+              ],
+            ),
+          ],)
         ],
       ),
       trailing:Image(
-        width: 60.0,
-        height: 60.0,
-        image:NetworkImage(eventModel.image,)
+        width: 100.0,
+        height: 100.0,
+        image: (eventModel.image!=null)?NetworkImage(eventModel.image):NetworkImage(
+          'https://static-s.aa-cdn.net/img/gp/20600003374622/CYx3IJANEy179hrkSj4qfCA7sw2XpO2cjuz3B6pStH74le6s2DzJFWnck_5s35HSouQ=w300?v=1',
+        ),
       ),
 
       onTap: () {
-
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ViewOld(eventModel: eventModel,)));
       },
     );
 
@@ -128,7 +135,7 @@ bool show =true;
     return Scaffold(
       backgroundColor: Colors.blue[100],
       body:  StreamBuilder<QuerySnapshot>(
-        stream: event.loadevents(),
+        stream: event.loadnewevents(),
         builder: (context,snapshot) {
           if (snapshot.hasData) {
             List _events = [];
@@ -136,24 +143,19 @@ bool show =true;
             for (var doc in snapshot.data.docs) {
               Map<String, dynamic> data = doc.data();
 
-             _events.add(EventModel(
-                 eventId: doc.id,
-                 fname: data['FirstName'],
-                 lname: data['LastName'],
-                 nationalid: data['NationalID'],
-                 gender: data['Gender'],
-                 image: data['image'],
-                 eventName:data['EventName'],
-                 audNum: data['AudinceNum'],
-               deadline: data['Deadline'],
-               eventAds: data['EventAds'],
-               eventBudget: data['eventBudget'],
-               eventCat: data['EventCat'],
-               eventEqu: data['EventEqu'],
-               eventIdea: data['EventIdea'],
-               eventTime: data['EventTime'],
-               location: data['Location'],
-             ));
+              _events.add(EventModel(
+                eventId: doc.id,
+                image: data['image'],
+                eventName:data['EventName'],
+                audNum: data['AudinceNum'],
+                deadline: data['Deadline'],
+                eventAds: data['EventAds'],
+                eventBudget: data['EventBudget '],
+                eventCat: data['EventCat'],
+                eventIdea: data['EventIdea'],
+                eventTime: data['EventTime'],
+                location: data['Location'],
+              ));
              print(_events);
             }
             return ListView.builder(
