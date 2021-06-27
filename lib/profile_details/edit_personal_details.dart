@@ -1,4 +1,6 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sahlhaly_event_planner/Component/bottomInfoBar.dart';
@@ -38,8 +40,30 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
   }
 
 
-  TextEditingController _Firstname,_Lastname,_Gender,_Religion,_NationalID;
+  TextEditingController _Firstname,_Lastname,_phone,_NationalID;
   final _formkeyJS = GlobalKey<FormState>();
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  Future getuserdata() async {
+    User userid = auth.currentUser;
+    _Firstname= new TextEditingController();
+    _Lastname= new TextEditingController();
+    _phone= new TextEditingController();
+    _NationalID= new TextEditingController();
+
+    var usertype=await _firestore.collection('Users').doc(userid.uid).get().then
+      ((DocumentSnapshot) async {
+
+      setState(() {
+        _phone.text = DocumentSnapshot.data()['Phone'];
+        _Firstname.text = DocumentSnapshot.data()['FirstName'];
+        _Lastname.text = DocumentSnapshot.data()['LastName'];
+        _NationalID.text= DocumentSnapshot.data()['NationalID'];
+
+      });
+
+      print("typeroute $gender");
+    });}
 
 
   String gender = "";
@@ -52,6 +76,7 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    getuserdata();
     _defaultGenderChoiceIndex = 0;
   }
 
@@ -134,26 +159,25 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
                         },
                       ),
                     ),
-                    SizedBox(width: 8.0),
                     Expanded(
                       child: TextFormField(
-                        controller: _Religion,
                         validator: (val) =>
-                        val.isEmpty ? 'Enter Your Religion' : null,
+                        val.isEmpty ? 'Enter Your phone ' : null,
                         onChanged: (val) {
-                          TextSelection previousSelection = _Religion.selection;
-                          _Religion.text = val;
-                          _Religion.selection = previousSelection;
+                          TextSelection previousSelection = _phone.selection;
+                          _phone.text= val;
+                          _phone.selection = previousSelection;
 
                         },
+                        controller: _phone,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(10.0))),
-                          labelText: "Religion",
+                              borderRadius: BorderRadius.circular(10.0)),
+                          labelText: "Phone",
                         ),
                       ),
-                    )
+                    ),
+                    SizedBox(width: 8.0),
                   ],
                 ),
                 SizedBox(height: 10.0),
