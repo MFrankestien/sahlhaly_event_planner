@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sahlhaly_event_planner/Component/bottomInfoBar.dart';
+import 'package:sahlhaly_event_planner/profile_details/personal_details.dart';
 
 import '../Component/style.dart';
 import 'package:sahlhaly_event_planner/utils/constants.dart';
@@ -64,6 +65,15 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
 
       print("typeroute $gender");
     });}
+  void Updateinfo () async {
+
+     User user = await auth.currentUser;
+    FirebaseFirestore.instance.collection('Users').doc(user.uid).update({"FirstName":_Firstname.text,
+      "LastName":_Lastname.text,"Gender":gender,"NationalID":_NationalID.text, "Phone":_phone.text});
+
+
+
+  }
 
 
   String gender = "";
@@ -253,7 +263,12 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
           onPressed: () async {
             print(gender);
             if (_formkeyJS.currentState.validate()) {
-
+              Updateinfo();
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          PersonalDetail()));
               print("Done");
 
             }
