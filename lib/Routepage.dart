@@ -20,7 +20,7 @@ class _RoutePageState extends State<RoutePage> {
   PageController pageController;
   int pageIndex = 0;
   SharedPreferences preferences;
-  String type;
+  String type,image;
   onPageChanged(int pageIndex) {
     setState(() {
       this.pageIndex = pageIndex;
@@ -44,10 +44,11 @@ class _RoutePageState extends State<RoutePage> {
       ((DocumentSnapshot) async {
 
         setState(() {
+          image =DocumentSnapshot.data()['image'];
           type = DocumentSnapshot.data()['UserType'];
         });
 
-      print("typeroute $type");
+      print("typeroute $image");
     });}
   @override
   void initState() {
@@ -88,7 +89,7 @@ class _RoutePageState extends State<RoutePage> {
 
         ],
       ),
-        appBar: buildAppBar(context,isTransparent: true),
+        appBar: buildAppBar(context,isTransparent: true,image: image),
         backgroundColor: Colors.white,
         body:PageView(
           controller: pageController,
@@ -124,7 +125,7 @@ class _RoutePageState extends State<RoutePage> {
 
         ],
       ),
-        appBar: buildAppBar(context,isTransparent: true),
+        appBar: buildAppBar(context,isTransparent: true,image: image),
         backgroundColor: Colors.white,
         body:PageView(
           controller: pageController,

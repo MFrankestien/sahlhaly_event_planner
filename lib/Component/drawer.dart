@@ -17,6 +17,8 @@ class _MainDrawerState extends State<MainDrawer> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   String name='';
   String lname='';
+  String image;
+
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   Future getusername() async {
     User userid = auth.currentUser;
@@ -27,6 +29,7 @@ class _MainDrawerState extends State<MainDrawer> {
       setState(() {
         name = DocumentSnapshot.data()['FirstName'];
         lname = DocumentSnapshot.data()['LastName'];
+        image =DocumentSnapshot.data()['image'];
       });
 
       print(name);
@@ -50,8 +53,9 @@ class _MainDrawerState extends State<MainDrawer> {
 
               CircleAvatar(
                   radius: 50.0,
-                  backgroundImage: NetworkImage("https://i.stack.imgur.com/l60Hf.png")
-              ),
+                  backgroundImage:(image!=null)?NetworkImage(image):NetworkImage(
+                    'https://i.stack.imgur.com/l60Hf.png',
+              )),
               SizedBox(
                 height: 5.0,
               ),

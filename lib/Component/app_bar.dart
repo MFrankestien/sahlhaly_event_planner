@@ -3,7 +3,7 @@ import 'package:sahlhaly_event_planner/profile_details/personal_details.dart';
 
 
 AppBar buildAppBar(BuildContext context,
-    {bool isTransparent = false, String title}) {
+    {bool isTransparent = false, String title,String image}) {
   return AppBar(
     iconTheme: IconThemeData(color: Color(0xFF5E5E5E)),
     backgroundColor: isTransparent ? Colors.transparent : Colors.white,
@@ -19,7 +19,9 @@ AppBar buildAppBar(BuildContext context,
       IconButton(
         icon: CircleAvatar(
   radius: 50.0,
-      backgroundImage: NetworkImage("https://i.stack.imgur.com/l60Hf.png")
+      backgroundImage: (image!=null)?NetworkImage(image):NetworkImage(
+        'https://i.stack.imgur.com/l60Hf.png',
+      )
   ),
         onPressed: () {
           Navigator.push(
