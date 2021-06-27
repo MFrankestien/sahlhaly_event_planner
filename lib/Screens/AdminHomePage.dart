@@ -196,7 +196,7 @@ class _AdHomePageState extends State<AdHomePage> {
                                         right: 20,
                                         bottom: 20),
                                     child: Icon(
-                                      FontAwesomeIcons.building,
+                                      FontAwesomeIcons.plus,
                                       size: 40.0,
                                       color: Colors.white,
                                     ),
@@ -212,7 +212,7 @@ class _AdHomePageState extends State<AdHomePage> {
                                         MainAxisAlignment.center,
                                         children: <Widget>[
                                           Text(
-                                            "Organization Events",
+                                            "Add Upcomming Events",
                                             style: TextStyle(
                                                 color: Theme.of(context)
                                                     .accentColor,
@@ -233,77 +233,7 @@ class _AdHomePageState extends State<AdHomePage> {
                 ),
               ),
               SizedBox(height: 10),
-              GestureDetector(
 
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => orgevent()),
-                  );
-
-                },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  elevation: 5,
-                  color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Row(
-                      children: <Widget>[
-                        RawMaterialButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10.0),
-                                  topRight: Radius.zero,
-                                  bottomLeft: Radius.zero,
-                                  bottomRight:
-                                  Radius.circular(50.0)),
-                            ),
-                            onPressed: () {},
-                            fillColor:
-                            Theme.of(context).accentColor,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 10,
-                                  left: 10,
-                                  right: 20,
-                                  bottom: 20),
-                              child: Icon(
-                                FontAwesomeIcons.building,
-                                size: 40.0,
-                                color: Colors.white,
-                              ),
-                            )),
-                        Expanded(
-                          child: Column(
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0),
-                                child: Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      "Organization Events",
-                                      style: TextStyle(
-                                          color: Theme.of(context)
-                                              .accentColor,
-                                          fontSize: 23.0),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
 
             ],
           ),
