@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:sahlhaly_event_planner/Events/UpEvents/Upreview.dart';
 import '../Requsted_event/Evreview.dart';
 import 'package:sahlhaly_event_planner/Events/eventsOperations.dart';
 import 'package:sahlhaly_event_planner/Events/oldEvents/oldreview.dart';
@@ -112,7 +113,7 @@ bool show =true;
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ViewOld(eventModel: eventModel,)));
+                builder: (context) => ViewUp(eventModel: eventModel,)));
       },
     );
 

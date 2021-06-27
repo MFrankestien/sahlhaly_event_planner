@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sahlhaly_event_planner/Component/style.dart';
+import 'package:sahlhaly_event_planner/Screens/payment.dart';
 import 'package:sahlhaly_event_planner/models/event_model.dart';
 import 'package:sahlhaly_event_planner/utils/constants.dart';
 import 'package:sahlhaly_event_planner/utils/size_config.dart';
@@ -252,6 +253,22 @@ class _ViewUpState extends State<ViewUp> {
                   Text('Complete your profile to show '),
                 ),
               ],),
+              SizedBox(height: 30),
+              Row(
+                children: <Widget>[
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FlatButton(color: Colors.green, onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MasterCard()),
+                      );
+
+                    }, child: Text('Join')),
+                  ))
+
+                ],
+              ),
 
 
             ],

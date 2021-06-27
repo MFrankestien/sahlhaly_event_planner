@@ -32,6 +32,7 @@ class _AddNeweventState extends State<AddNewevent> {
   final _formkeyNJ = GlobalKey<FormState>();
   final _eventModel = EventModel();
   String type='bm';
+  String cr='';
   String fname,lname,natinalid,gender,phone;
   String useremail='';
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -169,7 +170,21 @@ class _AddNeweventState extends State<AddNewevent> {
                                   borderRadius: BorderRadius.circular(10.0)),
                             )),
                         Divider(),
-
+                        TextFormField(
+                            onChanged: (val) {
+                              setState(() => cr = val);
+                            },
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: Colors.teal,
+                            ),
+                            decoration: InputDecoration(
+                              labelText: 'Commercial Record (for organizations only)',
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Colors.blueAccent, width: 32.0),
+                                  borderRadius: BorderRadius.circular(10.0)),
+                            )),
 
                         Divider(),
                         DropdownButton<String>(
@@ -429,6 +444,7 @@ class _AddNeweventState extends State<AddNewevent> {
               print(EventEquieoment);
 
               _eventModel.addEvent(EventModel(
+                cr:cr,
                 phone: phone,
                 gender: gender,
                 fname: fname,
