@@ -7,32 +7,18 @@ import 'package:sahlhaly_event_planner/profile_details/personal_details.dart';
 
 
 
-class SuccessPage extends StatefulWidget {
+class PaySuccessPage extends StatefulWidget {
   String userid;
 
-  SuccessPage({this.userid});
+  PaySuccessPage({this.userid});
 
   @override
-  _SuccessPageState createState() => _SuccessPageState(userid);
+  _PaySuccessPageState createState() => _PaySuccessPageState();
 }
 
-class _SuccessPageState extends State<SuccessPage> {
-  String userid;
+class _PaySuccessPageState extends State<PaySuccessPage> {
 
-  //final Firestore _firestore =Firestore.instance;
-  String type;
-
-
-
-  /*Future<void> getusertype() async{
-    FirebaseUser userid = await FirebaseAuth.instance.currentUser();
-    var usertype=await _firestore.collection('Users').document(userid.uid).get().then
-      ((DocumentSnapshot) async {
-      type = DocumentSnapshot.data['UserType'];
-      print(type);
-    });}*/
-
-  _SuccessPageState(this.userid);
+  _PaySuccessPageState();
 
   @override
   Widget build(BuildContext context) {
@@ -87,12 +73,25 @@ class _SuccessPageState extends State<SuccessPage> {
                               fontSize: 30.0,
                             ),
                           ),
-                          Text(
-                            'Your Account has been created',
-                            style: TextStyle(
-                              fontSize: 13.0,
+                          SizedBox(
+                            height: 30.0,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Text(
+                              'Your Payment for this event has been compeleted.',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                              ),
                             ),
                           ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          Text('Please check your Email to find your ticket ',style: TextStyle(
+                            fontSize: 20.0,
+                          ),)
+
                         ],
                       )),
                       SizedBox(

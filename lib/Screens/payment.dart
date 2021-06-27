@@ -4,6 +4,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:flutter/services.dart';
 import 'package:sahlhaly_event_planner/Component/app_bar.dart';
 import 'package:sahlhaly_event_planner/Routepage.dart';
+import 'package:sahlhaly_event_planner/Screens/payment_success_page.dart';
 
 class MasterCard extends StatefulWidget {
   @override
@@ -357,12 +358,12 @@ class _MasterCardState extends State<MasterCard>
         onPressed: () {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => RoutePage()),
+            MaterialPageRoute(builder: (context) => PaySuccessPage()),
           );
         },
         label: Text('Confirm'),
         icon: Icon(Icons.payment_rounded),
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.blue,
       ) ,
     );
   }
