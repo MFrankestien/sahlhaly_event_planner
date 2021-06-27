@@ -98,9 +98,17 @@ class _PersonalDetailState extends State<PersonalDetail> {
                   child: Container(
                     height: 120,
                     width: 120,
-                    child: CircleAvatar(
-                        radius: 50.0,
-                        backgroundImage: NetworkImage("https://i.stack.imgur.com/l60Hf.png")
+                    child: FloatingActionButton(
+                      onPressed: () {
+                        return Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => UploadPhotoPage()));
+                      },
+                      child: Icon(
+                        Icons.add_a_photo,
+                        size: 80.0,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      backgroundColor: Colors.white,
                     ),
                   ),
                 ),

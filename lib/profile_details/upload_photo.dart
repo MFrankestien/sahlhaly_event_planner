@@ -16,20 +16,39 @@ class UploadPhotoPage extends StatefulWidget {
 }
 
 class _UploadPhotoPageState extends State<UploadPhotoPage> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  Future getImage() async {
+    var image = await ImagePicker().getImage(source: ImageSource.gallery) ;
+
+    setState(() {
+      _image = image as File ;
+    });
+    String fileName = basename(_image.path);
+    Reference firebaseStorageRef = FirebaseStorage.instance.ref().child(fileName);
+    UploadTask uploadTask = firebaseStorageRef.putFile(_image);
+
+    TaskSnapshot taskSnapshot = await uploadTask;
+    String downlaodUrl = await taskSnapshot.ref.getDownloadURL();
+    if(downlaodUrl!=null){
+      urls=downlaodUrl;
+      User user = auth.currentUser;
+      FirebaseFirestore.instance.collection('Users').doc(user.uid).update({"image":downlaodUrl});
+      SharedPreferences preferences=await SharedPreferences.getInstance();
+      preferences.setString('Url', downlaodUrl);
+      print(user.uid);
+
+    }
 
 
-
+  }
   SharedPreferences preferences;
   File _image;
   String urls;
 
+
   @override
   void initState() {
     super.initState();
-    SharedPreferences.getInstance().then((prefs) {
-      setState(() => preferences = prefs);
-      urls =preferences.getString("Url");
-    });
 
   }
 
@@ -93,7 +112,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
                               size: 50.0,
                             ),
                             onPressed: () {
-
+                            getImage();
 
                             },
                           ),
